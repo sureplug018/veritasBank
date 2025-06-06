@@ -1,0 +1,90 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Loan History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(loans.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">User</th>
+              <th scope="col">Email</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Duration</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Date</th>
+              <th scope="col">Interest</th>
+              <th scope="col">Description</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% loans.forEach(function(loan, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= loan.user.firstName %> <%= loan.user.lastName %></td>
+              <td><%= loan.user.email %></td>
+              <td><%= loan.amount %></td>
+              <td><%= loan.duration %> Months</td>
+              <td class="text-center">
+                <% if(loan.status === 'pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Under Review</span>
+                <% }else if(loan.status === 'approved'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Approved</span>
+                <% }else { %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Declined</span>
+                <% } %>
+              </td>
+              <% const time = loan.createdAt.toLocaleTimeString() %>
+              <% const date = loan.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td><%= loan.interest %>%</td>
+              <td><%= loan.description %></td>
+              <td>
+                <a data-bs-toggle="dropdown" aria-expanded="false" href="/history/inter-bank-deposit?id=<%= loan.id %>" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="lucide:edit"></iconify-icon>
+                  </iconify-icon> Action
+                </a>
+                <% if(loan.status === 'pending'){ %>
+                <ul class="dropdown-menu p-12 border bg-base shadow">
+                  <li>
+                    <button data-loan-id="<%= loan.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 approve-loan-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Approve
+                    </button>
+                  </li>
+                  <li>
+                    <button data-loan-id="<%= loan.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 decline-loan-btn">
+                      <!-- <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Decline
+                    </button>
+                  </li>
+                  <!-- <li>
+                        <button type="button" class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+                          <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
+                          Delete
+                        </button>
+                      </li> -->
+                </ul>
+                <% } %>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Loan Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+
+<%- include('partials/dashboardFooterNav') %>

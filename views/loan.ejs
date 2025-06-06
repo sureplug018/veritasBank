@@ -1,0 +1,125 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="row gy-4">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0"></h5>
+      </div>
+      <div class="card-body">
+        <form class="row gy-3 needs-validation loan-form">
+
+          <div class="col-md-6 amount">
+            <label class="form-label">Amount</label>
+            <input type="number" id="amount" class="form-control" placeholder="Enter Amount" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Duration</label>
+            <select id="duration" class="form-control select-gateway">
+              <option value="" disabled selected>-- Select Duration --</option>
+              <option value="3">3 Months</option>
+              <option value="6">6 Months</option>
+              <option value="12">12 Months</option>
+              <option value="15">15 Months</option>
+              <option value="18">18 Months</option>
+              <option value="24">24 Months</option>
+            </select>
+          </div>
+          <div class="col-md-6 description">
+            <label class="form-label">Description</label>
+            <input id="description" type="text" class="form-control" placeholder="Description" required>
+          </div>
+          <!-- </div> -->
+
+          <!-- general amount -->
+
+
+          <div class="col-12">
+            <button class="btn btn-primary-600" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">Proceed</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete Event -->
+<div class="modal fade loanModal" id="exampleModalDelete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-body p-24 text-center">
+        <h6 class="text-md fw-semibold text-primary-light mb-0">
+          Enter 4 digit Transaction Pin
+        </h6>
+        <p></p>
+        <input type="password" id="transactionPin" class="form-control" placeholder="****">
+        <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+          <button class="w-50 btn btn-primary-600 border border-primary-600 text-md px-24 py-12 radius-8 loan-btn">
+            Apply
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="height: 30px;"></div>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Loan History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(loans.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Duration</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Date</th>
+              <th scope="col">Interest</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% loans.forEach(function(loan, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= loan.amount %></td>
+              <td><%= loan.duration %></td>
+              <td class="text-center">
+                <% if(loan.status === 'pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Under Review</span>
+                <% }else if(loan.status === 'approved'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Approved</span>
+                <% }else { %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Declined</span>
+                <% } %>
+              </td>
+              <% const time = loan.createdAt.toLocaleTimeString() %>
+              <% const date = loan.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td><%= loan.interest %>%</td>
+              <td><%= loan.description %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+
+        </table>
+        <p></p>
+        <a style="text-align: center;" href="/history/loan">See More</a>
+        <% }else{ %>
+        <p style="text-align: center;">No Loan Found!</p>
+
+        <% } %>
+
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

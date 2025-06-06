@@ -1,0 +1,61 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Loan History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(cards.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">User</th>
+              <th scope="col">Email</th>
+              <th scope="col">Card Type</th>
+              <th scope="col">Card Number</th>
+              <th scope="col">Expiry Date</th>
+              <th scope="col">CVV</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Date Issued</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% cards.forEach(function(card, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= card.user.firstName %> <%= card.user.lastName %></td>
+              <td><%= card.user.email %></td>
+              <td><%= card.cardType %></td>
+              <td><%= card.cardNumber %></td>
+              <% const cardTime = card.createdAt.toLocaleTimeString() %>
+              <% const cardDate = card.createdAt.toLocaleDateString() %>
+              <td><%= cardTime %> <%= cardDate %></td>
+              <td><%= card.cvv %></td>
+              <td class="text-center">
+                <% if(card.status === 'active'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Active</span>
+                <% }else if(card.status === 'in-active'){ %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">In-Active</span>
+                <% } %>
+              </td>
+              <% const time = card.createdAt.toLocaleTimeString() %>
+              <% const date = card.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Card Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+
+<%- include('partials/dashboardFooterNav') %>

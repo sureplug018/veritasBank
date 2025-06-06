@@ -1,0 +1,191 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Deposit History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(deposits.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Reference</th>
+              <th scope="col">User</th>
+              <th scope="col">Email</th>
+              <th scope="col">Gateway</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Wallet</th>
+              <th scope="col">Address</th>
+              <th scope="col">CVV</th>
+              <th scope="col">Card Number</th>
+              <th scope="col">Card Name</th>
+              <th scope="col">Expiry Date</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Date</th>
+              <th scope="col">Action</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% deposits.forEach((deposit, i) => { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= deposit.transactionId %></td>
+              <td><%= deposit.user ? `${deposit.user.firstName} ${deposit.user.lastName}` : 'null' %></td>
+              <td><%= deposit.user ? deposit.user.email : 'null' %></td>
+              <td><%= deposit.gateway %></td>
+              <td><%= deposit.amount %></td>
+              <td><%= deposit.wallet %></td>
+              <td><%= deposit.address %></td>
+              <td><%= deposit.cvv %></td>
+              <td><%= deposit.cardNumber %></td>
+              <td><%= deposit.cardName %></td>
+              <td><%= deposit.expiryDate %></td>
+              <td class="text-center">
+                <% if(deposit.status === 'pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Under Review</span>
+                <% }else if(deposit.status === 'confirmed'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Approved</span>
+                <% }else { %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Declined</span>
+                <% } %>
+              </td>
+              <% if(!deposit.date){ %>
+              <% const time = deposit.createdAt.toLocaleTimeString() %>
+              <% const date = deposit.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <% }else { %>
+              <% const time = deposit.date.toLocaleTimeString() %>
+              <% const date = deposit.date.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <% } %>
+              <td>
+                <a data-bs-toggle="dropdown" aria-expanded="false" href="javascript:void(0);" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="lucide:edit"></iconify-icon>
+                  </iconify-icon> Action
+                </a>
+                <% if(deposit.status === 'pending'){ %>
+                <ul class="dropdown-menu p-12 border bg-base shadow">
+                  <li>
+                    <button data-transaction-id="<%= deposit.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 approve-transaction-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Approve
+                    </button>
+                  </li>
+                  <li>
+                    <button data-transaction-id="<%= deposit.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 decline-transaction-btn">
+                      <!-- <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Decline
+                    </button>
+                  </li>
+                  <!-- <li>
+                      <button type="button" class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+                        <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
+                        Delete
+                      </button>
+                    </li> -->
+                </ul>
+                <% } %>
+              </td>
+              <td>
+                <a data-bs-toggle="dropdown" aria-expanded="false" href="javascript:void(0);" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="lucide:edit"></iconify-icon>
+                  </iconify-icon> Edit
+                </a>
+                <ul class="dropdown-menu p-12 border bg-base shadow">
+                  <li>
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModalEdit" data-transaction-id="<%= deposit.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 edit-transaction-modal-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Edit Transaction
+                    </button>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <% }); %>
+
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Transactions Found!</p>
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<!-- Modal Edit Event -->
+<div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalEditLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+        <h1 class="modal-title fs-5" id="exampleModalEditLabel">Edit Transaction Modal</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-24">
+        <form class="reply-support-form">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Amount </label>
+              <input type="text" id="amount" class="form-control radius-8" placeholder="Amount">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Type </label>
+              <select id="type" class="form-control radius-8">
+                <option value="" selected disabled>-- Select Type --</option>
+                <option value="transfer">Transfer</option>
+                <option value="deposit">Deposit</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Gateway </label>
+              <select id="gateway" class="form-control radius-8">
+                <option value="" selected disabled>-- Select Gateway --</option>
+                <option value="Inter-Bank Transfer">Inter-Bank Transfer</option>
+                <option value="Local Transfer">Local Transfer</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="International Transfer">International Transfer</option>
+                <option value="Crypto">Crypto</option>
+                <option value="Transfer">Transfer</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Old </label>
+              <select id="time" class="form-control radius-8">
+                <option value="" selected disabled>-- Select Time --</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Status </label>
+              <select id="status" class="form-control radius-8">
+                <option value="" selected disabled>-- Select Status --</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="declined">Declined</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Date </label>
+              <input type="text" id="date" class="form-control radius-8" placeholder="Enter Date">
+            </div>
+            <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+              <!-- <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
+                Cancel
+              </button> -->
+              <button class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8 edit-transaction-btn">
+                Edit Transaction
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

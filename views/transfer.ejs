@@ -1,0 +1,153 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+
+
+<div class="row gy-4">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0"></h5>
+      </div>
+      <div class="card-body">
+        <form class="row gy-3 needs-validation transfer-form">
+          <div class="col-md-6">
+            <label class="form-label">Transfer Type</label>
+            <select class="form-control select-gateway" id="gateway">
+              <option value="" disabled selected>-- Select Transfer Type --</option>
+              <option value="Inter-Bank Transfer">Inter-Bank Transfer</option>
+              <option value="Local Transfer">Local Transfer</option>
+              <option value="International Transfer">International Transfer</option>
+            </select>
+          </div>
+          <!-- Crypto deposit -->
+          <!-- <div class="crypto-deposit"> -->
+          <div class="col-md-6 accountNumber" style="display: none;">
+            <label class="form-label">Account Number</label>
+            <input type="text" id="accountNumber" class="form-control" placeholder="Account Number">
+            <span id="beneficiary"></span>
+          </div>
+          <div class="col-md-6 receiverName" style="display: none;">
+            <label class="form-label">Receiver Name</label>
+            <input type="text" id="receiverName" class="form-control" placeholder="Receiver Name">
+          </div>
+          <!-- </div> -->
+
+          <!-- card deposit -->
+          <!-- <div class="card-depost"> -->
+          <div class="col-md-6 IBAN" style="display: none;">
+            <label class="form-label">IBAN</label>
+            <input type="text" id="IBAN" class="form-control" placeholder="IBAN">
+          </div>
+          <div class="col-md-6 sortCode" style="display: none;">
+            <label class="form-label">Sort Code</label>
+            <input type="text" id="sortCode" class="form-control" placeholder="Sort Code">
+          </div>
+          <div class="col-md-6 routingNumber" style="display: none;">
+            <label class="form-label">Routing Number</label>
+            <input type="text" id="routingNumber" class="form-control" placeholder="Routing Number">
+          </div>
+          <div class="col-md-6 accountType" style="display: none;">
+            <label class="form-label">Account Type</label>
+            <input type="text" id="accountType" class="form-control" placeholder="Account Type">
+          </div>
+          <div class="col-md-6 address" style="display: none;">
+            <label class="form-label">Address</label>
+            <input type="text" id="address" class="form-control" placeholder="Address">
+          </div>
+          
+          <div class="col-md-6 swiftCode" style="display: none;">
+            <label class="form-label">BIC/Swift Code</label>
+            <input type="text" id="swiftCode" class="form-control" placeholder="BIC/Swift Code">
+          </div>
+          <div class="col-md-6 bankName" style="display: none;">
+            <label class="form-label">Bank Name</label>
+            <input type="text" id="bankName" class="form-control" placeholder="Bank Name">
+          </div>
+          <div class="col-md-6 description" style="display: none;">
+            <label class="form-label">Description</label>
+            <input type="text" id="description" class="form-control" placeholder="Description">
+          </div>
+          <!-- </div> -->
+
+          <!-- general amount -->
+          <div class="col-md-6 amount" style="display: none;">
+            <label class="form-label">Amount</label>
+            <input type="number" id="amount" class="form-control" placeholder="Enter Amount">
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-primary-600" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">Proceed</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete Event -->
+<div class="modal fade transferModal" id="exampleModalDelete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-body p-24 text-center">
+        <h6 class="text-md fw-semibold text-primary-light mb-0">
+          Enter 4 digit Transaction Pin
+        </h6>
+        <p></p>
+        <input type="password" id="transactionPin" class="form-control" placeholder="****">
+        <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+          <button class="w-50 btn btn-primary-600 border border-primary-600 text-md px-24 py-12 radius-8 transfer-btn">
+            Transfer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const selectPaymentGateway = document.querySelector('.select-gateway')
+  if (selectPaymentGateway) {
+    selectPaymentGateway.addEventListener('change', (e) => {
+      e.preventDefault()
+      if (selectPaymentGateway.value === 'Inter-Bank Transfer') {
+        document.querySelector('.amount').style.display = 'block'
+        document.querySelector('.accountNumber').style.display = 'block'
+        document.querySelector('.sortCode').style.display = 'none'
+        document.querySelector('.address').style.display = 'none'
+        document.querySelector('.receiverName').style.display = 'none'
+        document.querySelector('.IBAN').style.display = 'none'
+        document.querySelector('.swiftCode').style.display = 'none'
+        document.querySelector('.bankName').style.display = 'none'
+        document.querySelector('.description').style.display = 'block'
+        document.querySelector('.routingNumber').style.display = 'none'
+        document.querySelector('.accountType').style.display = 'none'
+      } else if (selectPaymentGateway.value === 'Local Transfer') {
+        document.querySelector('.amount').style.display = 'block'
+        document.querySelector('.accountNumber').style.display = 'block'
+        document.querySelector('.sortCode').style.display = 'none'
+        document.querySelector('.address').style.display = 'block'
+        document.querySelector('.receiverName').style.display = 'block'
+        document.querySelector('.IBAN').style.display = 'none'
+        document.querySelector('.swiftCode').style.display = 'block'
+        document.querySelector('.bankName').style.display = 'none'
+        document.querySelector('.description').style.display = 'block'
+        document.querySelector('.routingNumber').style.display = 'block'
+        document.querySelector('.accountType').style.display = 'block'
+      } else if (selectPaymentGateway.value === 'International Transfer') {
+        document.querySelector('.amount').style.display = 'block'
+        document.querySelector('.accountNumber').style.display = 'block'
+        document.querySelector('.sortCode').style.display = 'none'
+        document.querySelector('.address').style.display = 'block'
+        document.querySelector('.receiverName').style.display = 'block'
+        document.querySelector('.IBAN').style.display = 'block'
+        document.querySelector('.swiftCode').style.display = 'block'
+        document.querySelector('.bankName').style.display = 'block'
+        document.querySelector('.description').style.display = 'block'
+        document.querySelector('.routingNumber').style.display = 'none'
+        document.querySelector('.accountType').style.display = 'none'
+      }
+    })
+  }
+</script>
+
+<%- include('partials/dashboardFooterNav') %>

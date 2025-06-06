@@ -1,0 +1,57 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Loan History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(loans.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Duration</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Date</th>
+              <th scope="col">Interest</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% loans.forEach(function(loan, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= formatCurrency(loan.amount) %></td>
+              <td><%= loan.duration %> Months</td>
+              <td class="text-center">
+                <% if(loan.status === 'pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Under Review</span>
+                <% }else if(loan.status === 'approved'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Approved</span>
+                <% }else { %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Declined</span>
+                <% } %>
+              </td>
+              <% const time = loan.createdAt.toLocaleTimeString() %>
+              <% const date = loan.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td><%= loan.interest %>%</td>
+              <td><%= loan.description %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Loan Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+
+<%- include('partials/dashboardFooterNav') %>

@@ -1,0 +1,182 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="row gy-4">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Make Deposit</h5>
+      </div>
+      <div class="card-body">
+        <form class="row gy-3 needs-validation deposit-form">
+          <div class="col-md-6">
+            <label class="form-label">Select Gateway</label>
+            <select class="form-control select-gateway" id="gateway">
+              <option value="" disabled selected>-- Select Gateway --</option>
+              <option value="Transfer">Transfer</option>
+              <option value="Credit Card">Credit Card</option>
+              <option value="Crypto">Crypto</option>
+            </select>
+          </div>
+          <!-- Crypto deposit -->
+          <!-- <div class="crypto-deposit"> -->
+          <div class="col-md-6 wallet" style="display: none;">
+            <label class="form-label">Select Wallet</label>
+            <select class="form-control" id="wallet">
+              <option value="" disabled selected>-- Select Wallet --</option>
+              <% wallets.forEach(function(wallet){ %>
+                <option value="<%= wallet.name %>"><%= wallet.name %></option>
+              <% }) %>
+            </select>
+            <span id="wallet-address"></span>
+          </div>
+          <!-- </div> -->
+          <!-- card deposit -->
+          <!-- <div class="card-depost"> -->
+          <div class="col-md-6 cardNumber" style="display: none;">
+            <label class="form-label">Card Number </label>
+            <div class="input-group">
+              <span class="input-group-text bg-base">
+                <img src="https://www.flexifinance.net/assets/images/card/payment-icon.png" alt="image">
+              </span>
+              <input type="text" id="cardNumber" class="form-control" placeholder="0000 0000 0000 0000" required>
+            </div>
+          </div>
+          <div class="col-md-6 cardName" style="display: none;">
+            <label class="form-label">Card Holder</label>
+            <input type="text" id="cardName" class="form-control" placeholder="Card Holder" required>
+          </div>
+          <div class="col-md-6 expiryDate" style="display: none;">
+            <label class="form-label">Expiry Date</label>
+            <input type="text" id="expiryDate" class="form-control" placeholder="01/20" required>
+          </div>
+          <div class="col-md-6 cvv" style="display: none;">
+            <label class="form-label">CVV</label>
+            <input type="text" id="cvv" class="form-control" placeholder="123" required>
+          </div>
+          <div class="col-md-6 address" style="display: none;">
+            <label class="form-label">Billing Address</label>
+            <input type="text" id="address" class="form-control" placeholder="Billing Address" required>
+          </div>
+          <!-- </div> -->
+
+          <!-- transfer deposit -->
+          <div class="col-md-6 accountNumber" style="display: none;">
+            <label class="form-label">Account Number</label>
+            <div class="input-group has-validation">
+              <input type="text" id="accountNumber" class="form-control" value="www.random.com">
+              <button type="button" class="input-group-text bg-base">
+                <iconify-icon icon="lucide:copy"></iconify-icon> Copy
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6 accountName" style="display: none;">
+            <label class="form-label">Account Name</label>
+            <div class="input-group has-validation">
+              <input type="text" id="accountName" class="form-control" value="www.random.com">
+              <button type="button" class="input-group-text bg-base">
+                <iconify-icon icon="lucide:copy"></iconify-icon> Copy
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6 sortCode" style="display: none;">
+            <label class="form-label">Sort Code</label>
+            <div class="input-group has-validation">
+              <input type="text" id="sortCode" class="form-control" value="www.random.com">
+              <button type="button" class="input-group-text bg-base">
+                <iconify-icon icon="lucide:copy"></iconify-icon> Copy
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6 paymentReference" style="display: none;">
+            <label class="form-label">Payment Reference</label>
+            <div class="input-group has-validation">
+              <input type="text" id="paymentReference" class="form-control" value="www.random.com">
+              <button type="button" class="input-group-text bg-base">
+                <iconify-icon icon="lucide:copy"></iconify-icon> Copy
+              </button>
+            </div>
+          </div>
+
+          <!-- general amount -->
+          <div class="col-md-6 amount" style="display: none;">
+            <label class="form-label">Amount</label>
+            <input type="number" id="amount" class="form-control" placeholder="Enter Amount" required>
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-primary-600" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">Proceed</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete Event -->
+<div class="modal fade depositModal" id="exampleModalDelete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-body p-24 text-center">
+        <h6 class="text-md fw-semibold text-primary-light mb-0">
+          Enter 4 digit Transaction Pin
+        </h6>
+        <p></p>
+        <input type="password" id="transactionPin" class="form-control" placeholder="****">
+        <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+          <button class="w-50 btn btn-primary-600 border border-primary-600 text-md px-24 py-12 radius-8 deposit-btn">
+            Deposit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const selectPaymentGateway = document.querySelector('.select-gateway')
+  if (selectPaymentGateway) {
+    selectPaymentGateway.addEventListener('change', (e) => {
+      e.preventDefault()
+      if (selectPaymentGateway.value === 'Transfer') {
+        document.querySelector('.wallet').style.display = 'none'
+        document.querySelector('.cardNumber').style.display = 'none'
+        document.querySelector('.cardName').style.display = 'none'
+        document.querySelector('.expiryDate').style.display = 'none'
+        document.querySelector('.cvv').style.display = 'none'
+        document.querySelector('.amount').style.display = 'block'
+        document.querySelector('.accountNumber').style.display = 'block'
+        document.querySelector('.accountName').style.display = 'block'
+        document.querySelector('.sortCode').style.display = 'block'
+        document.querySelector('.paymentReference').style.display = 'block'
+        document.querySelector('.address').style.display = 'none'
+      } else if (selectPaymentGateway.value === 'Credit Card') {
+        document.querySelector('.wallet').style.display = 'none'
+        document.querySelector('.cardNumber').style.display = 'block'
+        document.querySelector('.cardName').style.display = 'block'
+        document.querySelector('.expiryDate').style.display = 'block'
+        document.querySelector('.cvv').style.display = 'block'
+        document.querySelector('.amount').style.display = 'block'
+        document.querySelector('.accountNumber').style.display = 'none'
+        document.querySelector('.accountName').style.display = 'none'
+        document.querySelector('.sortCode').style.display = 'none'
+        document.querySelector('.paymentReference').style.display = 'none'
+        document.querySelector('.address').style.display = 'block'
+      } else if (selectPaymentGateway.value === 'Crypto') {
+        document.querySelector('.wallet').style.display = 'block'
+        document.querySelector('.cardNumber').style.display = 'none'
+        document.querySelector('.cardName').style.display = 'none'
+        document.querySelector('.expiryDate').style.display = 'none'
+        document.querySelector('.cvv').style.display = 'none'
+        document.querySelector('.amount').style.display = 'block'
+        document.querySelector('.accountNumber').style.display = 'none'
+        document.querySelector('.accountName').style.display = 'none'
+        document.querySelector('.sortCode').style.display = 'none'
+        document.querySelector('.paymentReference').style.display = 'none'
+        document.querySelector('.address').style.display = 'none'
+      }
+    })
+  }
+</script>
+
+<%- include('partials/dashboardFooterNav') %>

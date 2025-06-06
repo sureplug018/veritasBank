@@ -1,0 +1,135 @@
+<%- include('partials/dashboardHeader') %>
+
+
+
+<section class="auth bg-base d-flex flex-wrap">
+  <div class="auth-left d-lg-block d-none">
+    <div class="d-flex align-items-center flex-column h-100 justify-content-center">
+      <img src="/assets/images/auth/auth-img.png" alt="">
+    </div>
+  </div>
+  <div class="auth-right py-32 px-24 d-flex flex-column justify-content-center">
+    <div class="max-w-464-px mx-auto w-100">
+      <div>
+        <a href="/" class="mb-40 max-w-290-px">
+          <img style="width: 200px; height: auto;" src="/assets/images/logo.png" alt="">
+        </a>
+        <h4 class="mb-12">Sign Up to your Account</h4>
+        <p class="mb-32 text-secondary-light text-lg">Welcome back! please enter your detail</p>
+      </div>
+      <form class="form-signup">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="firstName" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="First Name">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="middleName" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Middle Name">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="lastName" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="username" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Username">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="email" id="email" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Email">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="phoneNumber" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Phone">
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="country" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Country">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+              <select name="" id="accountType" class="form-control h-56-px bg-neutral-50 radius-12">
+                <option value="" disabled selected> Select Account type</option>
+                <option value="Checking Account">Checking Account</option>
+                <option value="Savings Account">Savings Account</option>
+                <option value="Fixed Deposit Account">Fixed Deposit Account</option>
+                <option value="Current Account">Current Account</option>
+                <option value="Crypto Currency Account">Crypto Currency Account</option>
+                <option value="Business Account">Business Account</option>
+                <option value="Non Resident Account">Non Resident Account</option>
+                <option value="Cooperate Business Account">Cooperate Business Account</option>
+                <option value="Investment Account">Investment Account</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+              <input type="number" id="transactionPin" maxlength="4" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="4 Digit Transaction Pin">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="mb-20">
+              <div class="position-relative ">
+                <div class="icon-field">
+
+                  <input type="password" class="form-control h-56-px bg-neutral-50 radius-12" id="password" placeholder="Password">
+                </div>
+                <span class="toggle-password ri-eye-line cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light" data-toggle="#password"></span>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="mb-20">
+              <div class="position-relative ">
+                <div class="icon-field">
+
+                  <input type="password" class="form-control h-56-px bg-neutral-50 radius-12" id="passwordConfirm" placeholder="Re-type Password">
+                </div>
+                <span class="toggle-password ri-eye-line cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light" data-toggle="#passwordConfirm"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="">
+          <div class="d-flex justify-content-between gap-2">
+            <div class="form-check style-check d-flex align-items-start">
+              <input class="form-check-input border border-neutral-300 mt-4" type="checkbox" value="" id="condition">
+              <label class="form-check-label text-sm" for="condition">
+                By creating an account means you agree to the
+                <a href="javascript:void(0)" class="text-primary-500 fw-semibold">Terms & Conditions</a> and our
+                <a href="javascript:void(0)" class="text-primary-500 fw-semibold">Privacy Policy</a>
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="btn btn-primary text-sm btn-sm px-12 py-16 w-100 radius-12 mt-32 btn--signup"> Sign Up</button>
+
+        <div class="mt-32 text-center text-sm">
+          <p class="mb-0">Already have an account? <a href="/sign-in" class="text-primary-500 fw-semibold">Sign In</a></p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <%- include('partials/dashboardFooter') %>

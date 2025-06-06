@@ -1,0 +1,185 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<style>
+  .atm-card {
+    width: 350px;
+    height: 200px;
+    background: linear-gradient(135deg, #3006a4, #7165cf);
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .chip {
+    width: 50px;
+    height: 35px;
+    background-color: #d4af37;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+
+  .card-number {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .card-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-holder,
+  .expiry-date {
+    font-size: 0.9rem;
+  }
+</style>
+
+<% if(card){ %>
+<div class="row gy-4">
+  <div class="col-lg-6">
+    <div class="card" style="margin-bottom: 10px;">
+      <div class="card-body" style="display: flex; justify-content: center; padding: 20px 0;">
+        <div class="atm-card">
+          <div class="chip"></div>
+          <div class="card-number"><%= String(card.cardNumber).replace(/(.{4})/g, '$1 ').trim() %></div>
+          <!-- <div>Expires</div> -->
+          <% const expiryDate = new Date(card.expiryDate); %>
+          <% const formattedDate = `${String(expiryDate.getMonth() + 1).padStart(2, '0')}/${String(expiryDate.getFullYear()).slice(2)}`; %>
+
+          <div><span style="line-height: 1; font-size: 8px;">VALID <br> THRU</span> <%= formattedDate %> <span style="margin-left: 40px;"><span style="font-size: 10px; margin-right: 5px;">Sec Code: </span><%= card.cvv %></span></div>
+          <div class="card-details">
+            <div class="card-holder">
+              <!-- <div>Card Holder</div> -->
+              <div><%= user.firstName %> <%= user.lastName %></div>
+            </div>
+            <div class="expiry-date">
+              <% if(card.cardType === 'Master Card'){ %>
+              <img style="width: 70px; height: auto;" src="/assets/images/master-card.png" alt="">
+              <% }else if(card.cardType === 'Visa Card'){ %>
+              <img style="width: 90px; height: auto;" src="/assets/images/visa-card.png" alt="">
+              <% } %>
+              <% if(card.cardType === 'American Express'){ %>
+              <img style="width: 90px; height: 60px;" src="/assets/images/american-express.png" alt="">
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Card Management</h5>
+      </div>
+      <div class="card-body">
+        <form class="row gy-3 needs-validation" novalidate>
+          <div class="col-md-6">
+            <label class="form-label">Card Status</label>
+            <p>
+              <span class="bg-success-focus text-success-main px-32 py-4 rounded-pill fw-medium text-sm">Active</span>
+            </p>
+          </div>
+
+          <!-- general amount -->
+          <div class="col-md-6 amount">
+            <label class="form-label">Action</label>
+            <p>
+              <button class="btn btn-danger-600" style="margin-top: 0;" type="submit">Freeze</button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<% }else{ %>
+<div class="row gy-4">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Apply For Card</h5>
+      </div>
+      <div class="card-body">
+        <form class="row gy-3 needs-validation card-application-form">
+          <div class="col-md-6">
+            <label class="form-label">Select Card Type</label>
+            <select class="form-control select-gateway" id="cardType">
+              <option value="" disabled selected>-- Select Card Type --</option>
+              <option value="American Express">American Express</option>
+              <option value="Visa Card">Visa Card</option>
+              <option value="Master Card">Master Card</option>
+            </select>
+          </div>
+          <div class="col-md-6 amount">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Full Name" required>
+          </div>
+          <div class="col-md-6 amount">
+            <label class="form-label">Email Address</label>
+            <input type="text" id="email" class="form-control" placeholder="Email Address" required>
+          </div>
+          <div class="col-md-6 amount">
+            <label class="form-label">Phone Number</label>
+            <input type="text" id="phoneNumber" class="form-control" placeholder="Phone Number" required>
+          </div>
+          <div class="col-md-6 amount">
+            <label class="form-label">Home Address</label>
+            <input type="text" id="address" class="form-control" placeholder="Home Address" required>
+          </div>
+          <div class="col-md-6 amount">
+            <label class="form-label">Zip Code</label>
+            <input type="text" id="zipCode" class="form-control" placeholder="Zip Code" required>
+          </div>
+          <div class="col-md-6 amount">
+            <label class="form-label">Country</label>
+            <input type="text" id="country" class="form-control" placeholder="Country" required>
+          </div>
+          <!-- general amount -->
+          <div class="col-md-6 amount">
+            <label class="form-label">Price</label>
+            <input type="text" id="amount" class="form-control" value="1000" disabled required>
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-primary-600" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">Pay $1000</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete Event -->
+<div class="modal fade cardApplicationModal" id="exampleModalDelete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-body p-24 text-center">
+        <h6 class="text-md fw-semibold text-primary-light mb-0">
+          Enter 4 digit Transaction Pin
+        </h6>
+        <p></p>
+        <input type="password" id="transactionPin" class="form-control" placeholder="****">
+        <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+          <button class="w-50 btn btn-primary-600 border border-primary-600 text-md px-24 py-12 radius-8 card-application-btn">
+            Apply
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% } %>
+
+<%- include('partials/dashboardFooterNav') %>

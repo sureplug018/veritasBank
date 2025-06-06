@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | National Trust bank</title>
+  <!-- favicon  -->
+  <link rel="shortcut icon" href="/assets/images/fav_icon.jpeg" type="image/x-icon">
+  <!-- faremwork of css -->
+  <link rel="stylesheet" href="/assets/css/bootstrap-lib/bootstrap.min.css">
+  <!-- style sheet of css -->
+  <link rel="stylesheet" href="/assets/css/style2.css">
+  <!-- Responsive sheet of css -->
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+  <!-- fonts awsome icon link  -->
+  <link rel="stylesheet" href="/assets/font-awesome-lib/icon/font-awesome.min.css">
+  <!-- slick-slider link css -->
+  <link rel="stylesheet" href="/assets/css/slick.min.css">
+  <!-- animation of css -->
+  <link rel="stylesheet" href="/assets/css/aos.css">
+
+  <!-- Smartsupp Live Chat script -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '887f9f5779601af6a7e22b6539e0240e2d7a58e8';
+    window.smartsupp || (function(d) {
+      var s, c, o = smartsupp = function() {
+        o._.push(arguments)
+      };
+      o._ = [];
+      s = d.getElementsByTagName('script')[0];
+      c = d.createElement('script');
+      c.type = 'text/javascript';
+      c.charset = 'utf-8';
+      c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?';
+      s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+  <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+    <!-- ======== 1.1. Header section ======== -->
+    <header>
+      <nav class="navbar navbar-expand-lg container pt-lg-4 pt-3 pb-lg-4 pb-3">
+        <div class="container-fluid justify-content-lg-start justify-content-between">
+          <!-- site logo -->
+          <a class="nav-logo p-0" href="/">
+            <figure><img src="/assets/images/logo.png" alt="logo"></figure>
+          </a>
+          <!-- navigation button  -->
+          <div class="d-flex gap-3 flex-row-reverse">
+            <button class="open-aside" onclick="if (!window.__cfRLUnblockHandlers) return false; open_aside()" type="button" data-cf-modified-72267b727475d805f6d64f8e-="">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <!-- navigation bar manu  -->
+            <div class="d-flex justify-content-between gap-xl-4 gap-lg-3 w-100 align-items-center">
+              <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav d-flex justify-content-center align-items-center gap-lg-4 gap-md-3 gap-sm-2 gap-2 mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about-us">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/services">Services</a>
+                  </li>
+                  <!-- <li class="dropdown">
+                    <a class="nav-link d-flex align-item-center gap-1" href="javascript:void(0);">Pages<i class="fa-sharp fa-solid fa-sort-down"></i></a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="Pricing.html">Pricing</a></li>
+                      <li>
+                        <a class="dropdown-item" href="Testimonials.html">Testimonials</a>
+                      </li>
+                      <li><a class="dropdown-item" href="Team.html">Team</a></li>
+                      <li><a class="dropdown-item" href="Blogs.html">Blogs</a></li>
+                      <li>
+                        <a class="dropdown-item" href="BlogDetails.html">Blog Details</a>
+                      </li>
+                      <li><a class="dropdown-item" href="Error.html">404</a></li>
+                      <li>
+                        <a class="dropdown-item" href="ComingSoon.html">Coming Soon</a>
+                      </li>
+                    </ul>
+                  </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="/contact-us">Contact</a>
+                  </li>
+                </ul>
+              </div>
+              <% if(!user){ %>
+              <div class="search SearchModal">
+                <a class="nav-link" href="/sign-in">
+                  Sign In
+                </a>
+              </div>
+              <div>
+                <a href="/sign-up" class="hover2 down-btn" id="getStartedAnchor">Get Started</a>
+              </div>
+              <% }else { %>
+              <div>
+                <a href="/dashboard" class="hover2 down-btn" id="getStartedAnchor">Dashboard</a>
+              </div>
+              <% } %>
+
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="modal searchModal">
+        <button class="close-btn d-flex" onclick="if (!window.__cfRLUnblockHandlers) return false; closeSearchModal()" data-cf-modified-72267b727475d805f6d64f8e-="">&times;</button>
+        <div class="position-relative d-flex align-items-center justify-content-center ">
+          <input type="text" placeholder="Search..." name="search">
+          <button class="search-btn">
+            <img src="/assets/images/icons/search.svg" alt="search">
+          </button>
+        </div>
+      </div>
+      <!--===== aside navigation slidebar =====-->
+      <aside>
+        <div id="mySidenav" class="right-sidbar">
+          <div class="side-nav-logo d-flex justify-content-between align-items-center ps-2 pe-1 nav-logo">
+            <figure class="navbar-brand">
+              <a href="/">
+                <img src="/assets/images/logo.png" alt="Logo">
+              </a>
+            </figure>
+            <button class="fa-solid fa-xmark" onclick="if (!window.__cfRLUnblockHandlers) return false; close_aside()" data-cf-modified-72267b727475d805f6d64f8e-=""></button>
+          </div>
+          <ul class="pt-4">
+            <li class="nav-item">
+              <a aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/about-us">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="/services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a href="/contact-us">Contact</a>
+            </li>
+            <% if(!user){ %>
+            <li class="nav-item">
+              <a href="/sign-in">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a href="/sign-up">Sign Up</a>
+            </li>
+            <% }else { %>
+            <li class="nav-item">
+              <a href="/dashboard">Dashboard</a>
+            </li>
+            <% } %>
+
+
+            <!-- <li class="nav-item">
+              <div class="d-flex align-items-center justify-content-between" id="slid-btn">
+                <button class="a-slid page-btn">Pages</button>
+                <i class="fa-solid fa-caret-down pe-2"></i>
+              </div>
+              <ul id="slid-drop">
+                <li><a href="Pricing.html">Pricing</a></li>
+                <li>
+                  <a href="Testimonials.html">Testimonials</a>
+                </li>
+                <li><a href="Team.html">Team</a></li>
+                <li><a href="Blogs.html">Blogs</a></li>
+                <li>
+                  <a href="BlogDetails.html">Blog Details</a>
+                </li>
+                <li><a href="Error.html">404</a></li>
+                <li>
+                  <a href="ComingSoon.html">Coming Soon</a>
+                </li>
+              </ul>
+            </li> -->
+          </ul>
+        </div>
+      </aside>
+    </header>
+    <!-- ======== End of 1.1. Header section ======== -->
+    <!-- ======== 8.1. BlogDetails_Hero section ======== -->
+    <section class="BlogDetails_Hero">
+      <div class="container">
+        <div class="d-flex flex-column gap-md-5 gap-4 position-relative pb-0 m-0" data-aos="zoom-in-up">
+          <h2>Contact Us</h2>
+          <div>
+            <iframe src="https://maps.google.com/maps?width=100%25&amp;height=550&amp;hl=en&amp;q=Evonicsoft%20Pvt.%20Ltd,%202nd%20Floor,%20Evonicsoft%20(Pvt)%20Ltd,%20Commercial%20Area%20Cavalry%20Ground,%20Plaza%2059,%20Extension%20Cavalry%20Ground,%20Lahore,%20Punjab%2054000+(Evonicsoft)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== End of 8.1. BlogDetails_Hero section ======== -->
+    <!-- ======== 9.1. Contact_Details section ======== -->
+    <section class="Contact_Details">
+      <div class="container">
+        <div class="d-flex flex-column align-items-center justify-content-center">
+          <h2 data-aos="fade-up">How Can We Help ?</h2>
+          <div class="d-flex flex-wrap justify-content-between w-100">
+            <a href="javascript:void(0);" data-aos="fade-up">
+              <div class="d-flex align-items-center text-start h-100">
+                <figure class="d-flex justify-content-center align-items-center">
+                  <i class="fa-solid fa-location-dot"></i>
+                </figure>
+                <div>
+                  <h4>Address</h4>
+                  <p>120 Genève NR21, West Lancashire, England</p>
+                </div>
+              </div>
+            </a>
+            <a href="javascript:void(0);" data-aos="fade-up">
+              <div class="d-flex align-items-center text-start h-100">
+                <figure class="d-flex justify-content-center align-items-center">
+                  <i class="fa-regular fa-envelope"></i>
+                </figure>
+                <div>
+                  <h4>Email Address:</h4>
+                  <p><span class="__cf_email__" data-cfemail="f0838580809f8284b09588919d809c95de939f9d">[email&#160;protected]</span></p>
+                  <p class="pt-1"><span class="__cf_email__" data-cfemail="aad9dfdadac5d8deeacfd2cbc7dac6cf84c9c5c7">[email&#160;protected]</span></p>
+                </div>
+              </div>
+            </a>
+            <a href="javascript:void(0);" data-aos="fade-up">
+              <div class="d-flex align-items-center text-start h-100">
+                <figure class="d-flex justify-content-center align-items-center">
+                  <i class="fa-solid fa-phone-volume"></i>
+                </figure>
+                <div>
+                  <h4>Phone:</h4>
+                  <p>(+122)34 5678 9100</p>
+                  <p class="pt-1">(+122)34 5678 9100</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== End of 9.1. Contact_Details section ======== -->
+    <!-- ======== 9.2. Contact section ======== -->
+    <section class="Contact">
+      <div class="container">
+        <div class="d-flex justify-content-center align-items-center text-center flex-column">
+          <h2 data-aos="fade-up">Let’s Get In Touch </h2>
+          <form class="mx-auto d-flex flex-column" data-aos="fade-up">
+            <div class="d-flex w-100">
+              <input type="text" placeholder="Name" required>
+              <input type="email" placeholder="Email" required>
+            </div>
+            <div class="d-flex w-100">
+              <input type="number" placeholder="Phone" required>
+              <input type="text" placeholder="Address" required>
+            </div>
+            <textarea name="messege" rows="11" placeholder="Messege" required></textarea>
+            <button type="submit" class="hover2">Submit</button>
+          </form>
+          <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <img src="/assets/images/icons/Confirmation_1.gif" alt="submitIcon">
+                <div>
+                  <h4>Response Submitted</h4>
+                  <h6>Your details have been successfully submitted. Thanks</h6>
+                </div>
+                <button type="button" class="hover2 m-auto" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======== End of 9.2. Contact section ======== -->
+    <!-- ======== 1.12. footer section ======== -->
+    <footer>
+      <div class="container">
+        <div class="d-flex flex-column align-items-center justify-content-center gap-lg-5 gap-md-4">
+          <h2>Get Latest Updates</h2>
+          <form class="d-flex justify-content-center align-items-center gap-lg-4 w-100">
+            <input type="email" placeholder="Enter Your Email" required name="footerEmail">
+            <button type="submit" class="hover1">Subscribe</button>
+          </form>
+          <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <img src="/assets/images/icons/Confirmation_1.gif" alt="submitIcon">
+                <div>
+                  <h4>Response Submitted</h4>
+                  <h6>Your details have been successfully submitted. Thanks</h6>
+                </div>
+                <button type="button" class="hover1 m-auto" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between w-100">
+          <div class="z-1 d-flex align-items-md-start align-items-center text-md-start text-center flex-column">
+            <figure>
+              <a href="/">
+                <img src="/assets/images/logo.png" alt="logo">
+              </a>
+            </figure>
+            <p class="m-0">NTB empowers you with secure, innovative banking solutions that transform your financial journey. Trust our legacy of excellence for every transaction. </p>
+            <div class="d-flex gap-lg-4 gap-md-3 flex-row">
+              <a href="javascript:void(0);">
+                <figure class="d-flex justify-content-center align-items-center">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </figure>
+              </a>
+              <a href="javascript:void(0);">
+                <figure class="d-flex justify-content-center align-items-center">
+                  <i class="fa-brands fa-twitter"></i>
+                </figure>
+              </a>
+              <a href="javascript:void(0);">
+                <figure class="d-flex justify-content-center align-items-center"><i class="fa-brands fa-instagram"></i>
+                </figure>
+              </a>
+              <a href="javascript:void(0);">
+                <figure class="d-flex justify-content-center align-items-center"><i class="fa-brands fa-linkedin"></i>
+                </figure>
+              </a>
+            </div>
+          </div>
+          <div class="d-flex flex-column gap-lg-4 d-flex align-items-md-start align-items-center text-md-start text-center ms-0">
+            <h5>Contact US</h5>
+            <ul>
+              <li><a href="javascript:void(0);">120 Genève NR21, West Lancashire, England</a></li>
+              <li>
+                Need help? Call us
+                <a href="javascript:void(0);">
+                  <span class="d-block">(+122) 34 5678 9100</span></a>
+              </li>
+              <li><a href="javascript:void(0);"><span class="__cf_email__" data-cfemail="65161015150a171125001d04081509004b060a08">[email&#160;protected]</span></a></li>
+            </ul>
+          </div>
+          <div class="d-flex gap-md-3 flex-column p-0 d-flex align-items-md-start align-items-center text-md-start text-center">
+            <!-- <h5>DOWNLOAD THE APP</h5>
+            <p>We suggest connecting to the apps you use for work</p>
+            <div class="d-flex gap-lg-3 gap-md-3">
+              <a href="javascript:void(0);">
+                <div class="d-flex gap-lg-3 gap-2 justify-content-center align-items-center">
+                  <figure><img src="/assets/images/icons/apple.svg" alt="apple"></figure>
+                  <div>
+                    <p>Download on the </p>
+                    <h6>App Store</h6>
+                  </div>
+                </div>
+              </a>
+              <a href="javascript:void(0);">
+                <div class="d-flex gap-lg-3 gap-2 justify-content-center align-items-center">
+                  <figure><img src="/assets/images/icons/playstore.svg" alt="playstore"></figure>
+                  <div>
+                    <p>GET IT ON</p>
+                    <h6>Google Play</h6>
+                  </div>
+                </div>
+              </a>
+            </div> -->
+          </div>
+        </div>
+        <div class="w-100 text-center py-lg-4 py-3">
+          <p>Copyright &copy; <span>2014</span> NTB. All Rights Reserved.</p>
+        </div>
+      </div>
+      <!-- scroll to top  -->
+      <div class="scrollToTop">
+        <div class="arrowUp">
+          <i class="fa-solid fa-arrow-up"></i>
+        </div>
+        <div class="water">
+          <svg viewBox="0 0 560 20" class="water_wave water_wave_back">
+            <use xlink:href="#wave"></use>
+          </svg>
+          <svg viewBox="0 0 560 20" class="water_wave water_wave_front">
+            <use xlink:href="#wave"></use>
+          </svg>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 560 20" style="display: none;">
+            <symbol id="wave">
+              <path d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z">
+              </path>
+              <path d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z">
+              </path>
+              <path d="M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z">
+              </path>
+              <path d="M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z">
+              </path>
+            </symbol>
+          </svg>
+        </div>
+      </div>
+    </footer>
+    <!-- ======== End of 1.12. footer section ======== -->
+  </div>
+
+  <!-- bootstrap min javascript -->
+  <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/assets/js/javascript-lib/bootstrap.min.js" type="72267b727475d805f6d64f8e-text/javascript"></script>
+  <!-- j Query -->
+  <script src="/assets/js/jquery.js" type="72267b727475d805f6d64f8e-text/javascript"></script>
+  <!-- slick slider js -->
+  <script src="/assets/js/slick.min.js" type="72267b727475d805f6d64f8e-text/javascript"></script>
+  <!-- main javascript -->
+  <script src="/assets/js/custom.js" type="72267b727475d805f6d64f8e-text/javascript"></script>
+  <!-- animation from javascript -->
+  <script src="/assets/js/aos.js" type="72267b727475d805f6d64f8e-text/javascript"></script>
+
+  <script src="/assets/cloudflare-static/rocket-loader.min.js" data-cf-settings="72267b727475d805f6d64f8e-|49" defer></script>
+  <script>
+    (function() {
+      function c() {
+        var b = a.contentDocument || a.contentWindow.document;
+        if (b) {
+          var d = b.createElement('script');
+          d.innerHTML = "window.__CF$cv$params={r:'9255d1bbac8022a9',t:'MTc0MjgxNTY0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+          b.getElementsByTagName('head')[0].appendChild(d)
+        }
+      }
+      if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if ('loading' !== document.readyState) c();
+        else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+        else {
+          var e = document.onreadystatechange || function() {};
+          document.onreadystatechange = function(b) {
+            e(b);
+            'loading' !== document.readyState && (document.onreadystatechange = e, c())
+          }
+        }
+      }
+    })();
+  </script>
+</body>
+
+</html>

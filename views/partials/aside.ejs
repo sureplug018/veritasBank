@@ -1,0 +1,150 @@
+<header>
+  <nav class="container navbar navbar-expand-lg ">
+    <div class="container-fluid">
+      <!-- site logo -->
+      <a class="nav-logo p-0" href="/"><img src="/assets/images/logo.png" alt="logo"></a>
+      <!-- navigation button  -->
+      <button class="navbar-toggle" onclick="if (!window.__cfRLUnblockHandlers) return false; openNav()" type="button" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-cf-modified-e68087fb8e3cbf4c25cbf16f-="">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <!-- navigation bar manu  -->
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav d-flex justify-content-center align-items-center gap-lg-2 gap-md-2 gap-sm-2 gap-2 mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/faq">Faq</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact-us">Contact</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a id="search-bar-bt" class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+          </li> -->
+          <% if(!user){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/sign-in">Sign In</a>
+          </li>
+          <li class="nav-item header_btn ">
+            <a class="nav-link btn-hover1 lh-1" href="/sign-up">Get Started</a>
+          </li>
+          <% }else{ %>
+          <li class="nav-item header_btn ">
+            <a class="nav-link btn-hover1 lh-1" href="/dashboard">Dashboard</a>
+          </li>
+          <% } %>
+
+          <li class="nav-item" onclick="if (!window.__cfRLUnblockHandlers) return false; open_right_side()" data-cf-modified-e68087fb8e3cbf4c25cbf16f-="">
+            <a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-bars"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--============ navigation left slidebar================-->
+  <aside>
+    <div id="mySidenav" class="sidenav">
+      <div class="side-nav-logo d-flex justify-content-between align-items-center ps-4 pe-3">
+        <figure class="navbar-brand"><a href="/"><img src="/assets/images/logo.png" alt="img" class="nav-logo"></a></figure>
+        <div class="closebtn" onclick="if (!window.__cfRLUnblockHandlers) return false; closeNav()" data-cf-modified-e68087fb8e3cbf4c25cbf16f-=""><i class="fa-solid fa-square-xmark side-bar-close-btn"></i></div>
+      </div>
+      <ul>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about-us">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/faq">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact-us">Contact</a>
+        </li>
+        <% if(!user){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/sign-in">Sign In</a>
+        </li>
+        <li class="nav-item header_btn ">
+          <a class="nav-link btn-hover1 lh-1" href="/sign-up">Get Started</a>
+        </li>
+        <% }else{ %>
+        <li class="nav-item header_btn ">
+          <a class="nav-link btn-hover1 lh-1" href="/dashboard">Dashboard</a>
+        </li>
+        <% } %>
+        <!-- <li class="nav-item">
+          <a id="search-bar-bt" class="nav-link" href="javascript:void(0);"><i class="fa-solid fa-magnifying-glass"></i></a>
+        </li> -->
+        <li class="nav-item" style="display: none;">
+          <div class="d-flex align-items-center justify-content-between pt-3" id="slid-btn">
+            <button class="a-slid">Pages</button>
+            <i class="fa-solid fa-caret-down pe-4"></i>
+          </div>
+          <ul id="slid-drop" class="myst">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="404.html">404</a></li>
+            <li><a href="coming.html">Coming Soon</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <!--================== navigation drop search bar================-->
+  <div class="search" id="search-bar">
+    <form class="d-flex nav-search">
+      <input type="text" name="search" placeholder="Enter your text">
+      <button class="btn-hover1" type="submit">Search</button>
+    </form>
+    <button id="remove-btn">
+      <i class="fa-solid fa-square-xmark "></i>
+    </button>
+  </div>
+  <!--=================navigation Right slidebar==================-->
+  <section class="right-sidbar" id="right_side">
+    <div class="d-flex justify-content-between align-items-center">
+      <!-- site logo -->
+      <a class="p-0 " href="/"><img src="/assets/images/logo.png" alt="logo"></a>
+      <button class="close_right_sidebar fa-solid fa-xmark" onclick="if (!window.__cfRLUnblockHandlers) return false; close_right_sade()" data-cf-modified-e68087fb8e3cbf4c25cbf16f-=""> </button>
+    </div>
+    <p class="mt-4 pb-3">We are committed to transforming the way you manage your finances with innovative, reliable, and accessible solutions. Our goal is to empower individuals and businesses to achieve financial success with ease.
+    </p>
+    <a href="javascript:void(0);" class="btn-hover1">Discover More</a>
+    <hr>
+    <h5 class="mt-4 mb-4">Connected details:</h5>
+    <ul class="d-flex flex-column gap-3">
+      <li>
+        <a href="javascript:void(0);"> <i class="fa-solid fa-phone"></i></a>
+        <a href="mailto:support@ntbank.org"><span class="__cf_email__">support@ntbank.org</span></a>
+      </li>
+      <li>
+        <a href="javascript:void(0);"><i class="fa-solid fa-envelope"></i></a>
+        <a href="javascript:void(0);">+123-456-7890</a>
+      </li>
+      <li>
+        <a href="javascript:void(0);"><i class="fa-solid fa-clock"></i></a>
+        <a href="javascript:void(0);">Office Hours: 8AM - 11PM Sunday -
+          Weekend Day</a>
+      </li>
+    </ul>
+    <span class="d-flex gap-4 mt-4">
+      <a href="javascript:void(0);" class="p-0"><i class="fa-brands fa-facebook"></i></a>
+      <a href="javascript:void(0);" class="p-0"><i class="fa-brands fa-instagram"></i></a>
+      <a href="javascript:void(0);" class="p-0"><i class="fa-brands fa-twitter"></i></a>
+    </span>
+  </section>
+</header>

@@ -1,0 +1,86 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Transaction History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(applications.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">User</th>
+              <th scope="col">Email</th>
+              <th scope="col">Card Type</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Date</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% applications.forEach(function(application, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= application.user.firstName %> <%= application.user.lastName %></td>
+              <td><%= application.user.email %></td>
+              <td><%= application.cardType %></td>
+              <td class="text-center">
+                <% if(application.status === 'pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Under Review</span>
+                <% }else if(application.status === 'approved'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Approved</span>
+                <% }else { %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Declined</span>
+                <% } %>
+              </td>
+              <td>$<%= application.amount %></td>
+              <% const time = application.createdAt.toLocaleTimeString() %>
+              <% const date = application.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td>
+                <a data-bs-toggle="dropdown" aria-expanded="false" href="javascript.void(0);" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="lucide:edit"></iconify-icon>
+                  </iconify-icon> Action
+                </a>
+                <% if(application.status === 'pending'){ %>
+                <ul class="dropdown-menu p-12 border bg-base shadow">
+                  <li>
+                    <button data-card-id="<%= application.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 approve-card-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Approve
+                    </button>
+                  </li>
+                  <li>
+                    <button data-card-id="<%= application.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 decline-card-btn">
+                      <!-- <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Decline
+                    </button>
+                  </li>
+                  <!-- <li>
+                        <button type="button" class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+                          <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
+                          Delete
+                        </button>
+                      </li> -->
+                </ul>
+                <% } %>
+              </td>
+            </tr>
+            <% }) %>
+
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Card Application Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

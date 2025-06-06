@@ -1,0 +1,36 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="row gy-4">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Support</h5>
+      </div>
+      <div class="card-body">
+        <p>If you need advice or have any question in mind or technical assistance, do not hesitate to contact our specialists. Our Live Support team are always available to attend to you.</p>
+        <p>Email Address: <span>support@ntbank.org</span></p>
+        <form class="row gy-3 needs-validation support-form">
+          <div class="col-md-6 amount">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="fullName" class="form-control" placeholder="Full Name" required>
+          </div>
+          <!-- general amount -->
+          <div class="col-md-6 amount">
+            <label class="form-label">Subject</label>
+            <input type="text" id="subject" class="form-control" placeholder="Subject" required>
+          </div>
+          <div class="col-md-12 amount">
+            <label class="form-label">Message</label>
+            <textarea id="message" class="form-control" rows="5"></textarea>
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-primary-600 support-btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

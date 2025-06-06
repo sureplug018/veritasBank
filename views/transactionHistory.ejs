@@ -1,0 +1,73 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Transfer History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(transactions.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Reference</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Type</th>
+              <th scope="col">Method</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Date</th>
+              <!-- <th scope="col">Details</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <% transactions.forEach(function(transaction, i){ %>
+            <tr style="cursor: pointer;" onclick="window.location.href='/history/transactions/<%= transaction.id %>'">
+              <td><%= i + 1 %></td>
+              <td><%= transaction.transactionId %></td>
+              <td>$<%= formatCurrency(transaction.amount) %></td>
+              <% if(transaction.type === 'deposit'){ %>
+              <td style="color: green;"><%= transaction.type %></td>
+              <% }else if(transaction.type === 'transfer'){ %>
+              <td style="color: red;"><%= transaction.type %></td>
+              <% } %>
+
+              <td><%= transaction.gateway %></td>
+              <td class="text-center">
+                <% if(transaction.status === 'pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Pending</span>
+                <% }else if(transaction.status === 'confirmed'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Successful</span>
+                <% }else { %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Declined</span>
+                <% } %>
+              </td>
+              <% if(!transaction.date){ %>
+              <% const time = transaction.createdAt.toLocaleTimeString() %>
+              <% const date = transaction.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <% }else { %>
+              <% const time = transaction.date.toLocaleTimeString() %>
+              <% const date = transaction.date.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <% } %>
+
+              <!-- <td>
+                <a href="/history/local-transaction?id=<%= transaction.id %>" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="iconamoon:eye-light"></iconify-icon> view
+                </a>
+              </td> -->
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% }else { %>
+        <p style="text-align: center;">No Transaction Found!</p>
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

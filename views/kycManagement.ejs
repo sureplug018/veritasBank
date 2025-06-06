@@ -1,0 +1,86 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Kyc History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(kycs.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">User</th>
+              <th scope="col">Email</th>
+              <th scope="col">Front</th>
+              <th scope="col">Back</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Date</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% kycs.forEach((kyc, i) => { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= kyc.user.firstName %> <%= kyc.user.lastName %></td>
+              <td><%= kyc.user.email %></td>
+              <td><a href="<%= kyc.front %>" target="_blank">View Front</a></td>
+              <td><a href="<%= kyc.back %>" target="_blank">View Back</a></td>
+              <td class="text-center">
+                <% if(kyc.status === 'Pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Under Review</span>
+                <% }else if(kyc.status === 'Verified'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Approved</span>
+                <% }else { %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Declined</span>
+                <% } %>
+              </td>
+              <% const time = kyc.createdAt.toLocaleTimeString() %>
+              <% const date = kyc.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td>
+                <a data-bs-toggle="dropdown" aria-expanded="false" href="javascript:void(0);" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="lucide:edit"></iconify-icon>
+                  </iconify-icon> Action
+                </a>
+                <% if(kyc.status === 'Pending'){ %>
+                <ul class="dropdown-menu p-12 border bg-base shadow">
+                  <li>
+                    <button data-kyc-id="<%= kyc.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 approve-kyc-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Approve
+                    </button>
+                  </li>
+                  <li>
+                    <button data-kyc-id="<%= kyc.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 decline-kyc-btn">
+                      <!-- <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Decline
+                    </button>
+                  </li>
+                  <!-- <li>
+                    <button type="button" class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+                      <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
+                      Delete
+                    </button>
+                  </li> -->
+                </ul>
+                <% } %>
+
+              </td>
+            </tr>
+            <% }); %>
+
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Transactions Found!</p>
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

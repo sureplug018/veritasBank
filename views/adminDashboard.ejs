@@ -1,0 +1,160 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="row row-cols-xxxl-5 row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-4">
+  <div class="col">
+    <div class="card shadow-none border bg-gradient-start-1 h-100">
+      <div class="card-body p-20">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <p class="fw-medium text-primary-light mb-1">Total Users</p>
+            <h6 class="mb-0"><%= users.length %></h6>
+          </div>
+          <!-- <div class="w-50-px h-50-px bg-cyan rounded-circle d-flex justify-content-center align-items-center">
+            <iconify-icon icon="gridicons:multiple-users" class="text-white text-2xl mb-0"></iconify-icon>
+          </div> -->
+        </div>
+        <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+          <!-- <span class="d-inline-flex align-items-center gap-1 text-success-main">
+            <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon> +5000
+          </span> -->
+          <a class="text-success-main" href="/admin/users">See All ></a>
+        </p>
+      </div>
+    </div><!-- card end -->
+  </div>
+  <div class="col">
+    <div class="card shadow-none border bg-gradient-start-2 h-100">
+      <div class="card-body p-20">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <p class="fw-medium text-primary-light mb-1">Total Deposits</p>
+            <% let total = 0 %>
+            <% totalDeposits.forEach(function(deposit){ %>
+            <% total += deposit.amount %>
+            <% }) %>
+            <h6 class="mb-0">$ <%= total %></h6>
+          </div>
+          <!-- <div class="w-50-px h-50-px bg-purple rounded-circle d-flex justify-content-center align-items-center">
+            <iconify-icon icon="fa-solid:award" class="text-white text-2xl mb-0"></iconify-icon>
+          </div> -->
+        </div>
+        <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+          <!-- <span class="d-inline-flex align-items-center gap-1 text-danger-main">
+            <iconify-icon icon="bxs:down-arrow" class="text-xs"></iconify-icon> -800
+          </span> -->
+          <a class="text-success-main" href="/admin/history/deposit">See All ></a>
+        </p>
+      </div>
+    </div><!-- card end -->
+  </div>
+  <div class="col">
+    <div class="card shadow-none border bg-gradient-start-3 h-100">
+      <div class="card-body p-20">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <p class="fw-medium text-primary-light mb-1">Pending Deposits</p>
+            <h6 class="mb-0"><%= pendingDeposits.length %></h6>
+          </div>
+          <!-- <div class="w-50-px h-50-px bg-info rounded-circle d-flex justify-content-center align-items-center">
+            <iconify-icon icon="fluent:people-20-filled" class="text-white text-2xl mb-0"></iconify-icon>
+          </div> -->
+        </div>
+        <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+          <!-- <span class="d-inline-flex align-items-center gap-1 text-success-main">
+            <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon> +200
+          </span> -->
+          <a class="text-success-main" href="/admin/pending-deposits">See All ></a>
+        </p>
+      </div>
+    </div><!-- card end -->
+  </div>
+  <div class="col">
+    <div class="card shadow-none border bg-gradient-start-3 h-100">
+      <div class="card-body p-20">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <p class="fw-medium text-primary-light mb-1">Pending Transfers</p>
+            <h6 class="mb-0"><%= pendingTransfers.length %></h6>
+          </div>
+          <!-- <div class="w-50-px h-50-px bg-info rounded-circle d-flex justify-content-center align-items-center">
+            <iconify-icon icon="fluent:people-20-filled" class="text-white text-2xl mb-0"></iconify-icon>
+          </div> -->
+        </div>
+        <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+          <!-- <span class="d-inline-flex align-items-center gap-1 text-success-main">
+            <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon> +200
+          </span> -->
+          <a class="text-success-main" href="/admin/pending-transfers">See All ></a>
+        </p>
+      </div>
+    </div><!-- card end -->
+  </div>
+  <div class="col">
+    <div class="card shadow-none border bg-gradient-start-3 h-100">
+      <div class="card-body p-20">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <p class="fw-medium text-primary-light mb-1">Pending Loans</p>
+            <h6 class="mb-0"><%= pendingLoans.length %></h6>
+          </div>
+          <!-- <div class="w-50-px h-50-px bg-info rounded-circle d-flex justify-content-center align-items-center">
+            <iconify-icon icon="fluent:people-20-filled" class="text-white text-2xl mb-0"></iconify-icon>
+          </div> -->
+        </div>
+        <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+          <!-- <span class="d-inline-flex align-items-center gap-1 text-success-main">
+            <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon> +200
+          </span> -->
+          <a class="text-success-main" href="/admin/history/loan">See All ></a>
+        </p>
+      </div>
+    </div><!-- card end -->
+  </div>
+  <div class="col">
+    <div class="card shadow-none border bg-gradient-start-3 h-100">
+      <div class="card-body p-20">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <p class="fw-medium text-primary-light mb-1">Pending Card Applications</p>
+            <h6 class="mb-0"><%= pendingCardApplications.length %></h6>
+          </div>
+          <!-- <div class="w-50-px h-50-px bg-info rounded-circle d-flex justify-content-center align-items-center">
+            <iconify-icon icon="fluent:people-20-filled" class="text-white text-2xl mb-0"></iconify-icon>
+          </div> -->
+        </div>
+        <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+          <!-- <span class="d-inline-flex align-items-center gap-1 text-success-main">
+            <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon> +200
+          </span> -->
+          <a class="text-success-main" href="/admin/card-applications">See All ></a>
+        </p>
+      </div>
+    </div><!-- card end -->
+  </div>
+  <div class="col">
+    <div class="card shadow-none border bg-gradient-start-3 h-100">
+      <div class="card-body p-20">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <p class="fw-medium text-primary-light mb-1">Pending Supports</p>
+            <h6 class="mb-0"><%= pendingSupports.length %></h6>
+          </div>
+          <!-- <div class="w-50-px h-50-px bg-info rounded-circle d-flex justify-content-center align-items-center">
+            <iconify-icon icon="fluent:people-20-filled" class="text-white text-2xl mb-0"></iconify-icon>
+          </div> -->
+        </div>
+        <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+          <!-- <span class="d-inline-flex align-items-center gap-1 text-success-main">
+            <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon> +200
+          </span> -->
+          <a class="text-success-main" href="/admin/supports">See All ></a>
+        </p>
+      </div>
+    </div><!-- card end -->
+  </div>
+</div>
+
+<div style="height: 20px;"></div>
+
+
+<%- include('partials/dashboardFooterNav') %>

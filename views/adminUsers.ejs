@@ -1,0 +1,230 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Loan History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(users.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Middle Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Username</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Date of Birth</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Account Type</th>
+              <th scope="col">Role</th>
+              <th scope="col">Transfer Status</th>
+              <th scope="col">Balance</th>
+              <th scope="col">Loan</th>
+              <th scope="col">Savings</th>
+              <th scope="col">Country</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Address</th>
+              <th scope="col">KYC</th>
+              <th scope="col">Created At</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(function(user, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= user.firstName %></td>
+              <td><%= user.lastName %></td>
+              <td><%= user.middleName %></td>
+              <td><%= user.username %></td>
+              <td><%= user.email %></td>
+              <td><%= user.username %></td>
+              <td><%= user.dateOfBirth %></td>
+              <td class="text-center">
+                <% if(user.status === true){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Active</span>
+                <% }else if(user.status === false){ %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">In-Active</span>
+                <% } %>
+              </td>
+              <td><%= user.accountType %></td>
+              <td><%= user.role %></td>
+              <% if(user.transferStatus === true){ %>
+              <td style="color: green;">Normal</td>
+              <% }else { %>
+              <td style="color: red;">Always Successful</td>
+              <% } %>
+              <td><%= user.balance %></td>
+              <td><%= user.loan %></td>
+              <td><%= user.savings %></td>
+              <td><%= user.country %></td>
+              <td><%= user.gender %></td>
+              <td><%= user.address %></td>
+              <td class="text-center">
+                <% if(user.kyc === true){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Verified</span>
+                <% }else if(user.kyc === false){ %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Not Verified</span>
+                <% } %>
+              </td>
+              <% const time = user.createdAt.toLocaleTimeString() %>
+              <% const date = user.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td>
+                <a data-bs-toggle="dropdown" aria-expanded="false" href="javascript:void(0);" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="lucide:edit"></iconify-icon>
+                  </iconify-icon> Action
+                </a>
+                <ul class="dropdown-menu p-12 border bg-base shadow">
+                  <% if(user.status === false){ %>
+                  <li>
+                    <button data-user-id="<%= user.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 activate-account-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Activate Account
+                    </button>
+                  </li>
+                  <% }else { %>
+                  <li>
+                    <button data-user-id="<%= user.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 deactivate-account-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Deactivate Account
+                    </button>
+                  </li>
+                  <% } %>
+                  <% if(user.transferStatus === false){ %>
+                  <li>
+                    <button data-user-id="<%= user.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 activate-transfer-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Normal Transfers
+                    </button>
+                  </li>
+                  <% }else { %>
+                  <li>
+                    <button data-user-id="<%= user.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 deactivate-transfer-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Success Transfers
+                    </button>
+                  </li>
+                  <% } %>
+                  <li>
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModalEdit" data-user-id="<%= user.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 send-mail-modal-btn">
+                      <!-- <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Send Message
+                    </button>
+                  </li>
+                  <li>
+                    <button data-bs-toggle="modal" data-bs-target="#editModal" data-user-id="<%= user.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 edit-user-balance-modal-btn">
+                      <!-- <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Edit User Balance
+                    </button>
+                  </li>
+                  <!-- <li>
+                      <button type="button" class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+                        <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
+                        Delete
+                      </button>
+                    </li> -->
+                </ul>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No User Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<!-- Modal Edit Event -->
+<div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalEditLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+        <h1 class="modal-title fs-5" id="exampleModalEditLabel">Send Message</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-24">
+        <form class="reply-support-form">
+          <div class="row">
+            <div class="col-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Subject </label>
+              <input type="text" id="subject" class="form-control radius-8" placeholder="Enter Subject">
+            </div>
+            <div class="col-12 mb-20">
+              <label for="desc" class="form-label fw-semibold text-primary-light text-sm mb-8">Message</label>
+              <textarea class="form-control" id="message" rows="4" cols="50" placeholder="Write some text"></textarea>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+              <!-- <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
+                Cancel
+              </button> -->
+              <button class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8 send-mail-btn">
+                Send Message
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Event -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalEditLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+        <h1 class="modal-title fs-5" id="exampleModalEditLabel">Edit User Balance</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-24">
+        <form class="edit-user-balance-form">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Type </label>
+              <select id="type" class="form-control radius-8">
+                <option value="" selected disabled>-- Select Type --</option>
+                <option value="add">Add</option>
+                <option value="subtract">Subtract</option>
+              </select>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Wallet </label>
+              <select id="wallet" class="form-control radius-8">
+                <option value="" selected disabled>-- Select Wallet --</option>
+                <option value="balance">Balance</option>
+                <option value="loan">Loan</option>
+                <option value="savings">Savings</option>
+              </select>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Amount </label>
+              <input type="text" id="amount" class="form-control radius-8" placeholder="Enter Amount">
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+              <!-- <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
+                Cancel
+              </button> -->
+              <button class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8 edit-user-balance-btn">
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

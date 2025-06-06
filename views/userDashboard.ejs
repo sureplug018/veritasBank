@@ -1,0 +1,651 @@
+<!-- meta tags and other links -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | National Trust Bank</title>
+  <link rel="icon" type="image/png" href="/assets/images/fav_icon.jpeg" sizes="16x16">
+  <!-- remix icon font css  -->
+  <link rel="stylesheet" href="/assets/css/remixicon.css">
+  <!-- BootStrap css -->
+  <link rel="stylesheet" href="/assets/css/lib/bootstrap.min.css">
+  <!-- Apex Chart css -->
+  <link rel="stylesheet" href="/assets/css/lib/apexcharts.css">
+  <!-- Data Table css -->
+  <link rel="stylesheet" href="/assets/css/lib/dataTables.min.css">
+  <!-- Text Editor css -->
+  <link rel="stylesheet" href="/assets/css/lib/editor-katex.min.css">
+  <link rel="stylesheet" href="/assets/css/lib/editor.atom-one-dark.min.css">
+  <link rel="stylesheet" href="/assets/css/lib/editor.quill.snow.css">
+  <!-- Date picker css -->
+  <link rel="stylesheet" href="/assets/css/lib/flatpickr.min.css">
+  <!-- Calendar css -->
+  <link rel="stylesheet" href="/assets/css/lib/full-calendar.css">
+  <!-- Vector Map css -->
+  <link rel="stylesheet" href="/assets/css/lib/jquery-jvectormap-2.0.5.css">
+  <!-- Popup css -->
+  <link rel="stylesheet" href="/assets/css/lib/magnific-popup.css">
+  <!-- Slick Slider css -->
+  <link rel="stylesheet" href="/assets/css/lib/slick.css">
+  <!-- prism css -->
+  <link rel="stylesheet" href="/assets/css/lib/prism.css">
+  <!-- file upload css -->
+  <link rel="stylesheet" href="/assets/css/lib/file-upload.css">
+  <!-- Izi toast -->
+  <link rel="stylesheet" href="/assets/css/lib/iziToast.min.css">
+  <link rel="stylesheet" href="/assets/css/lib/audioplayer.css">
+  <!-- main css -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Smartsupp Live Chat script -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '887f9f5779601af6a7e22b6539e0240e2d7a58e8';
+    window.smartsupp || (function(d) {
+      var s, c, o = smartsupp = function() {
+        o._.push(arguments)
+      };
+      o._ = [];
+      s = d.getElementsByTagName('script')[0];
+      c = d.createElement('script');
+      c.type = 'text/javascript';
+      c.charset = 'utf-8';
+      c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?';
+      s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+  <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+  <style>
+    /* Footer Menu Styling */
+    .footer-menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #3006a4;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      /* border-top: 1px solid #ddd; */
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-menu a {
+      text-align: center;
+      flex: 1;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-menu a svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin: 0 auto 5px;
+      /* Center SVG and add spacing */
+      fill: #ffffff;
+    }
+
+    /* Hide on larger screens */
+    @media (min-width: 769px) {
+      .footer-menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <button type="button" class="sidebar-close-btn">
+      <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
+    </button>
+    <div>
+      <a href="/" class="sidebar-logo">
+        <img style="width: 100px; width: 100px;" src="/assets/images/logo.png" alt="site logo" class="light-logo">
+        <img style="width: 100px; width: 100px;" src="/assets/images/logo.png" alt="site logo" class="dark-logo">
+        <img style="width: 100px; width: 100px;" src="/assets/images/logo.png" alt="site logo" class="logo-icon">
+      </a>
+    </div>
+    <div class="sidebar-menu-area">
+      <ul class="sidebar-menu" id="sidebar-menu">
+        <% if(user.role === 'user'){ %>
+        <li>
+          <a href="/dashboard">
+            <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/deposit">
+            <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+            <span>Deposit</span>
+          </a>
+        </li>
+        <li>
+          <a href="/transfer">
+            <iconify-icon icon="hugeicons:money-send-square" class="menu-icon"></iconify-icon>
+            <span>Transfer</span>
+          </a>
+        </li>
+        <li>
+          <a href="/zelle">
+            <iconify-icon icon="hugeicons:money-send-square" class="menu-icon"></iconify-icon>
+            <span>Zelle</span>
+          </a>
+        </li>
+        <li>
+          <a href="/history/transactions">
+            <iconify-icon icon="hugeicons:money-send-square" class="menu-icon"></iconify-icon>
+            <span>Transactions History</span>
+          </a>
+        </li>
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
+            <span>History</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="/history/deposit"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Deposit</a>
+            </li>
+            <li>
+              <a href="/history/inter-bank-transfer"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Inter-Bank Transfer</a>
+            </li>
+            <li>
+              <a href="/history/local-transfer"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Local Transfer</a>
+            </li>
+            <li>
+              <a href="/history/international-transfer"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> International Transfer</a>
+            </li>
+          </ul>
+        </li> -->
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <iconify-icon icon="heroicons:document" class="menu-icon"></iconify-icon>
+            <span>Loan</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="/loan"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Apply for Loan</a>
+            </li>
+            <li>
+              <a href="/history/loan"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Loan History</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+            <span>Bill management</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="/pay-bills"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Pay Bills</a>
+            </li>
+            <li>
+              <a href="/history/bill"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Bill History</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/card-management">
+            <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
+            <span>Card</span>
+          </a>
+        </li>
+        <li>
+          <a href="/support">
+            <iconify-icon icon="bi:chat-dots" class="menu-icon"></iconify-icon>
+            <span>Support</span>
+          </a>
+        </li>
+        <% }else{ %>
+        <li>
+          <a href="/admin/dashboard">
+            <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="/deposit/add-money">
+            <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+            <span>Add Money</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="/admin/history/transfer">
+            <iconify-icon icon="hugeicons:money-send-square" class="menu-icon"></iconify-icon>
+            <span>Transfer History</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/history/deposit">
+            <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
+            <span>Deposit History</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/history/loan">
+            <iconify-icon icon="heroicons:document" class="menu-icon"></iconify-icon>
+            <span>Loan History</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/history/bill">
+            <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+            <span>Bill History</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/card-applications">
+            <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
+            <span>Card Applications</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/cards">
+            <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
+            <span>User Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/supports">
+            <iconify-icon icon="bi:chat-dots" class="menu-icon"></iconify-icon>
+            <span>Support</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/send-mail">
+            <iconify-icon icon="bi:chat-dots" class="menu-icon"></iconify-icon>
+            <span>Send Newsletter</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/users">
+            <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+            <span>Users</span>
+          </a>
+        </li>
+        <% } %>
+
+        <li>
+          <a href="/profile">
+            <i class="ri-user-settings-line text-xl me-6 d-flex w-auto"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="javascript:void(0)" class="signOut-user-btn">
+            <iconify-icon icon="lucide:power" class="menu-icon"></iconify-icon>
+            <span>Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="dashboard-main">
+    <div class="navbar-header">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <div class="d-flex flex-wrap align-items-center gap-4">
+            <button type="button" class="sidebar-toggle">
+              <iconify-icon icon="heroicons:bars-3-solid" class="icon text-2xl non-active"></iconify-icon>
+              <iconify-icon icon="iconoir:arrow-right" class="icon text-2xl active"></iconify-icon>
+            </button>
+            <button type="button" class="sidebar-mobile-toggle">
+              <iconify-icon icon="heroicons:bars-3-solid" class="icon"></iconify-icon>
+            </button>
+            <!-- <form class="navbar-search">
+          <input type="text" name="search" placeholder="Search">
+          <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+        </form> -->
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <button type="button" data-theme-toggle class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"></button>
+            <div>
+              <div class="gtranslate_wrapper"></div>
+              <script>
+                window.gtranslateSettings = {
+                  "default_language": "en",
+                  "native_language_names": true,
+                  "detect_browser_language": true,
+                  "wrapper_selector": ".gtranslate_wrapper",
+                  "flag_size": 24
+                }
+              </script>
+              <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
+            </div>
+            <div class="dropdown">
+              <button class="d-flex justify-content-center align-items-center rounded-circle" type="button" data-bs-toggle="dropdown">
+                <img src="<%= user.paymentProof ? user.paymentProof : '/assets/images/user.png' %>" alt="image" class="w-40-px h-40-px object-fit-cover rounded-circle">
+              </button>
+              <div class="dropdown-menu to-top dropdown-menu-sm">
+                <div class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
+                  <div>
+                    <h6 class="text-lg text-primary-light fw-semibold mb-2"><%= user.firstName %> <%= user.lastName %></h6>
+                    <span class="text-secondary-light fw-medium text-sm"><%= user.role %></span>
+                  </div>
+                  <button type="button" class="hover-text-danger">
+                    <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon>
+                  </button>
+                </div>
+                <ul class="to-top-list">
+                  <li>
+                    <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href="/profile">
+                      <iconify-icon icon="solar:user-linear" class="icon text-xl"></iconify-icon> My Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href="/profile">
+                      <iconify-icon icon="icon-park-outline:setting-two" class="icon text-xl"></iconify-icon> Setting
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3 signOut-user-btn" href="javascript:void(0)">
+                      <iconify-icon icon="lucide:power" class="icon text-xl"></iconify-icon> Log Out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div><!-- Profile dropdown end -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-main-body">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+        <h6 class="fw-semibold mb-0"><% if(name){ %>
+          Welcome back <%= name %>, <% }else{ %> <%= title %> <% } %></h6>
+
+        <ul class="d-flex align-items-center gap-2">
+          <li class="fw-medium">
+            <% if(!name){ %>
+            <a href="javascript:void(0);" class="d-flex align-items-center gap-1 hover-text-primary">
+              <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+              <%= title %>
+            </a>
+            <% } %>
+
+          </li>
+          <!-- <li>-</li>
+          <li class="fw-medium">AI</li> -->
+        </ul>
+      </div>
+
+
+
+      <div class="overflow-auto pb-3">
+        <div class="row row-cols-xxxl-5 row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-4 flex-nowrap">
+          <div class="col d-inline-block">
+            <div class="card shadow-none border bg-gradient-start-1 h-100">
+              <div class="card-body p-20">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                  <div>
+                    <p class="fw-medium text-primary-light mb-1">Account Balance</p>
+                    <h6 class="mb-0">$<%= formatCurrency(user.balance) %></h6>
+                  </div>
+                  <!-- <div class="w-50-px h-50-px bg-cyan rounded-circle d-flex justify-content-center align-items-center">
+              <iconify-icon icon="gridicons:multiple-users" class="text-white text-2xl mb-0"></iconify-icon>
+            </div> -->
+                </div>
+                <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+                  <!-- <span class="d-inline-flex align-items-center gap-1 text-success-main">
+              <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon> +5000
+            </span> -->
+                  Account Number - <%= user.accountNumber %> <br>
+                  <%= user.accountType %>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col d-inline-block">
+            <div class="card shadow-none border bg-gradient-start-2 h-100">
+              <div class="card-body p-20">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                  <div>
+                    <p class="fw-medium text-primary-light mb-1">Savings</p>
+                    <h6 class="mb-0">$<%= formatCurrency(user.savings) %></h6>
+                  </div>
+                  <!-- <div class="w-50-px h-50-px bg-purple rounded-circle d-flex justify-content-center align-items-center">
+              <iconify-icon icon="fa-solid:award" class="text-white text-2xl mb-0"></iconify-icon>
+            </div> -->
+                </div>
+                <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+                  <!-- <span class="d-inline-flex align-items-center gap-1 text-danger-main">
+              <iconify-icon icon="bxs:down-arrow" class="text-xs"></iconify-icon> -800
+            </span> -->
+                  <!-- Last 30 days subscription -->
+                  Account Number - <%= user.accountNumber %> <br>
+                  <%= user.accountType %>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col d-inline-block">
+            <div class="card shadow-none border bg-gradient-start-3 h-100">
+              <div class="card-body p-20">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                  <div>
+                    <p class="fw-medium text-primary-light mb-1">Loan</p>
+                    <h6 class="mb-0">$<%= formatCurrency(user.loan) %></h6>
+                  </div>
+                  <!-- <div class="w-50-px h-50-px bg-info rounded-circle d-flex justify-content-center align-items-center">
+              <iconify-icon icon="fluent:people-20-filled" class="text-white text-2xl mb-0"></iconify-icon>
+            </div> -->
+                </div>
+                <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
+                  <!-- <span class="d-inline-flex align-items-center gap-1 text-success-main">
+              <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon> +200
+            </span>
+            Last 30 days users -->
+                  Account Number - <%= user.accountNumber %> <br>
+                  <%= user.accountType %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div style="height: 20px;"></div>
+
+      <style>
+        /* Quick Action Icons Enhancement */
+        .quick-actions {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 50px;
+          margin: 30px 0;
+          padding: 20px;
+          /* background-color: #ffffff; */
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .action-icon {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 90px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .action-icon:hover {
+          transform: translateY(-5px);
+        }
+
+        .icon-container {
+          width: 65px;
+          height: 65px;
+          border-radius: 15px;
+          /* background-color: #f0f8f1; */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 10px;
+          box-shadow: 0 4px 10px #9a7bf2;
+          transition: all 0.3s ease;
+        }
+
+
+        .icon-container img {
+          width: 30px;
+          height: 30px;
+          transition: all 0.3s ease;
+        }
+
+        .action-icon:hover .icon-container img {
+          filter: brightness(10);
+        }
+
+        .action-icon p {
+          font-size: 12px;
+          font-weight: 500;
+          color: #4a4a4a;
+          margin: 0;
+          text-align: center;
+        }
+
+        /* Bitcoin icon special styling */
+        .icon-container.bitcoin {
+          background-color: #f7931a1a;
+          box-shadow: 0 4px 10px rgba(247, 147, 26, 0.15);
+        }
+
+        .action-icon:hover .icon-container.bitcoin {
+          background-color: #f7931a;
+        }
+
+        /* Card icon special styling */
+        .icon-container.card {
+          background-color: #1a5f7a1a;
+          box-shadow: 0 4px 10px rgba(26, 95, 122, 0.15);
+        }
+
+        .action-icon:hover .icon-container.card {
+          background-color: #1a5f7a;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .quick-actions {
+            padding: 15px;
+            gap: 15px;
+          }
+
+          .action-icon {
+            width: 75px;
+          }
+
+          .icon-container {
+            width: 50px;
+            height: 50px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .quick-actions {
+            gap: 10px;
+          }
+
+          .action-icon {
+            width: 65px;
+          }
+
+          .icon-container {
+            width: 45px;
+            height: 45px;
+          }
+
+          .icon-container img {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      </style>
+
+      <div class="col-12">
+        <div class="card radius-12">
+          <div class="card-body p-16">
+            <div class="quick-actions">
+              <!-- Share icon -->
+              <div class="action-icon">
+                <div class="icon-container">
+                  <svg onclick="window.location.href='/transfer'" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#9a7bf2">
+                    <path d="M13 14H11C7.54202 14 4.53953 15.9502 3.03239 18.8107C3.01093 18.5433 3 18.2729 3 18C3 12.4772 7.47715 8 13 8V2.5L23.5 11L13 19.5V14ZM11 12H15V15.3078L20.3214 11L15 6.69224V10H13C10.5795 10 8.41011 11.0749 6.94312 12.7735C8.20873 12.2714 9.58041 12 11 12Z"></path>
+                  </svg>
+                </div>
+                <p class="text-primary-light">Transfer</p>
+              </div>
+
+              <!-- Transfer icon -->
+              <div class="action-icon">
+                <div class="icon-container">
+                  <svg onclick="window.location.href='/deposit'" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#9a7bf2">
+                    <path d="M12.0004 16C14.2095 16 16.0004 14.2091 16.0004 12 16.0004 9.79086 14.2095 8 12.0004 8 9.79123 8 8.00037 9.79086 8.00037 12 8.00037 14.2091 9.79123 16 12.0004 16ZM21.0049 4.00293H3.00488C2.4526 4.00293 2.00488 4.45064 2.00488 5.00293V19.0029C2.00488 19.5552 2.4526 20.0029 3.00488 20.0029H21.0049C21.5572 20.0029 22.0049 19.5552 22.0049 19.0029V5.00293C22.0049 4.45064 21.5572 4.00293 21.0049 4.00293ZM4.00488 15.6463V8.35371C5.13065 8.017 6.01836 7.12892 6.35455 6.00293H17.6462C17.9833 7.13193 18.8748 8.02175 20.0049 8.3564V15.6436C18.8729 15.9788 17.9802 16.8711 17.6444 18.0029H6.3563C6.02144 16.8742 5.13261 15.9836 4.00488 15.6463Z"></path>
+                  </svg>
+                </div>
+                <p class="text-primary-light">Deposit</p>
+              </div>
+
+              <!-- Exchange icon -->
+              <div class="action-icon">
+                <div class="icon-container">
+                  <svg onclick="window.location.href='/pay-bills'" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#9a7bf2">
+                    <path d="M19 22H5C3.34315 22 2 20.6569 2 19V3C2 2.44772 2.44772 2 3 2H17C17.5523 2 18 2.44772 18 3V15H22V19C22 20.6569 20.6569 22 19 22ZM18 17V19C18 19.5523 18.4477 20 19 20C19.5523 20 20 19.5523 20 19V17H18ZM16 20V4H4V19C4 19.5523 4.44772 20 5 20H16ZM6 7H14V9H6V7ZM6 11H14V13H6V11ZM6 15H11V17H6V15Z"></path>
+                  </svg>
+                </div>
+                <p class="text-primary-light">Bill Payment</p>
+              </div>
+
+              <!-- Exchange icon -->
+              <div class="action-icon">
+                <div class="icon-container">
+                  <svg onclick="window.location.href='/support'" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#9a7bf2">
+                    <path d="M6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455ZM5.76282 17H20V5H4V18.3851L5.76282 17ZM11 10H13V12H11V10ZM7 10H9V12H7V10ZM15 10H17V12H15V10Z"></path>
+                  </svg>
+                </div>
+                <p class="text-primary-light">Support</p>
+              </div>
+
+              <!-- Exchange icon -->
+              <div class="action-icon">
+                <div class="icon-container">
+                  <svg onclick="window.location.href='/card-management'" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#9a7bf2">
+                    <path d="M12.001 18.2942C10.916 18.9333 9.65132 19.3 8.30098 19.3C4.2693 19.3 1.00098 16.0316 1.00098 12C1.00098 7.96827 4.2693 4.69995 8.30098 4.69995C9.65132 4.69995 10.916 5.06659 12.001 5.70575C13.0859 5.06659 14.3506 4.69995 15.701 4.69995C19.7327 4.69995 23.001 7.96827 23.001 12C23.001 16.0316 19.7327 19.3 15.701 19.3C14.3506 19.3 13.0859 18.9333 12.001 18.2942ZM13.7027 16.9103C14.3194 17.1615 14.994 17.3 15.701 17.3C18.6281 17.3 21.001 14.9271 21.001 12C21.001 9.07284 18.6281 6.69995 15.701 6.69995C14.994 6.69995 14.3194 6.83837 13.7027 7.08957C14.8821 8.38619 15.601 10.1091 15.601 12C15.601 13.8908 14.8821 15.6137 13.7027 16.9103ZM10.2992 7.08957C9.68255 6.83837 9.00793 6.69995 8.30098 6.69995C5.37387 6.69995 3.00098 9.07284 3.00098 12C3.00098 14.9271 5.37387 17.3 8.30098 17.3C9.00793 17.3 9.68255 17.1615 10.2992 16.9103C9.11986 15.6137 8.40098 13.8908 8.40098 12C8.40098 10.1091 9.11986 8.38619 10.2992 7.08957ZM12.001 8.20521C11.0139 9.16781 10.401 10.5123 10.401 12C10.401 13.4876 11.0139 14.8321 12.001 15.7947C12.9881 14.8321 13.601 13.4876 13.601 12C13.601 10.5123 12.9881 9.16781 12.001 8.20521Z"></path>
+                  </svg>
+                </div>
+                <p class="text-primary-light">Card Management</p>
+              </div>
+
+              <div class="action-icon">
+                <div class="icon-container">
+                  <svg xmlns="http://www.w3.org/2000/svg" onclick="window.location.href='/zelle'" width="35" height="35" viewBox="0 0 24 24" fill="#9a7bf2" id="zelle">
+                    <g id="social/logos/zelle" fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+                      <polygon id="line" stroke="#9a7bf2" points="12.5 8.5 5.5 8.5 5.5 4.5 9.5 4.5 9.5 1.5 13.5 1.5 13.5 4.5 17.5 4.5 17.5 8.5 10.5 14.5 17.5 14.5 17.5 18.5 13.5 18.5 13.5 21.5 9.5 21.5 9.5 18.5 5.5 18.5 5.5 14.5"></polygon>
+                    </g>
+                  </svg>
+                </div>
+                <p class="text-primary-light">Zelle</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include('partials/dashboardFooterNav') %>

@@ -1,0 +1,61 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Transaction History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(depositHistory.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Reference</th>
+              <th scope="col">Amount</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Method</th>
+              <th scope="col">Date</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% depositHistory.forEach(function(deposit, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= deposit.transactionId %></td>
+              <td><%= deposit.amount %></td>
+              <td class="text-center">
+                <% if(deposit.status === 'pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Under Review</span>
+                <% }else if(deposit.status === 'confirmed'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Approved</span>
+                <% }else { %>
+                <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Declined</span>
+                <% } %>
+              </td>
+              <td><%= deposit.gateway %></td>
+              <% const time = deposit.createdAt.toLocaleTimeString() %>
+              <% const date = deposit.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td>
+                <a href="/history/deposit?id=<%= deposit.id %>" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="iconamoon:eye-light"></iconify-icon> view
+                </a>
+              </td>
+            </tr>
+            <% }) %>
+
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Transaction Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

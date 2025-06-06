@@ -1,0 +1,113 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Transaction History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(supports.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">User</th>
+              <th scope="col">Email</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Message</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Date</th>
+              <th scope="col">Reply</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% supports.forEach(function(support, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= support.fullName %></td>
+              <td><%= support.userId.email %></td>
+              <td><%= support.subject %></td>
+              <td><%= support.message %></td>
+              <td class="text-center">
+                <% if(support.status === 'pending'){ %>
+                <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Pending</span>
+                <% }else if(support.status === 'replied'){ %>
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Approved</span>
+                <% } %>
+              </td>
+              <% const time = support.createdAt.toLocaleTimeString() %>
+              <% const date = support.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td>
+                <a data-bs-toggle="dropdown" aria-expanded="false" href="javascript:void(0);" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="lucide:edit"></iconify-icon>
+                  </iconify-icon> Reply
+                </a>
+                <% if(support.status === 'pending'){ %>
+                <ul class="dropdown-menu p-12 border bg-base shadow">
+                  <li>
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModalEdit" data-support-id="<%= support.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 reply-support-modal-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Reply
+                    </button>
+                  </li>
+                  <!-- <li>
+                          <button type="button" class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+                            <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
+                            Delete
+                          </button>
+                        </li> -->
+                </ul>
+                <% } %>
+              </td>
+            </tr>
+            <% }) %>
+
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Support Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<!-- Modal Edit Event -->
+<div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalEditLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+        <h1 class="modal-title fs-5" id="exampleModalEditLabel">Send Message</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-24">
+        <form class="reply-support-form">
+          <div class="row">
+            <div class="col-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Subject </label>
+              <input type="text" id="subject" class="form-control radius-8" placeholder="Enter Subject">
+            </div>
+            <div class="col-12 mb-20">
+              <label for="desc" class="form-label fw-semibold text-primary-light text-sm mb-8">Message</label>
+              <textarea class="form-control" id="message" rows="4" cols="50" placeholder="Write some text"></textarea>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+              <!-- <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
+                Cancel
+              </button> -->
+              <button class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8 reply-support-btn">
+                Send Message
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

@@ -1,0 +1,55 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Transaction History</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(bills.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Bill Type</th>
+              <th scope="col">Bill Specification</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Date</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% bills.forEach(function(bill, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= bill.type %></td>
+              <td><%= bill.specification %></td>
+              <td class="text-center">
+                <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Success</span>
+              </td>
+              <td><%= formatCurrency(bill.amount) %></td>
+              <% const time = bill.createdAt.toLocaleTimeString() %>
+              <% const date = bill.createdAt.toLocaleDateString() %>
+              <td><%= time %> <%= date %></td>
+              <td>
+                <a href="/history/bill?id=<%= bill.id %>" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px bg-primary-light text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="iconamoon:eye-light"></iconify-icon> view
+                </a>
+              </td>
+            </tr>
+            <% }) %>
+
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Bill History Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<%- include('partials/dashboardFooterNav') %>
