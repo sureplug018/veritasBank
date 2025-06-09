@@ -139,6 +139,71 @@ exports.forgotPassword = (req, res) => {
   }
 };
 
+exports.creditCard = (Req, res) => {
+  try {
+    return res.status(200).render('credit-card', {
+      title: 'Credit Cards',
+    });
+  } catch (err) {
+    return res.status(500).render('error', {
+      title: 'Error',
+      message: 'Something went wrong',
+    });
+  }
+};
+
+exports.loans = (req, res) => {
+  try {
+    return res.status(200).render('loans', {
+      title: 'Loans',
+    });
+  } catch (err) {
+    return res.status(500).render('error', {
+      title: 'Error',
+      message: 'Something went wrong',
+    });
+  }
+};
+
+exports.security = (req, res) => {
+  try {
+    return res.status(200).render('security', {
+      title: 'Security',
+    });
+  } catch (err) {
+    return res.status(500).render('error', {
+      title: 'Error',
+      message: 'Something went wrong',
+    });
+  }
+};
+
+exports.terms = (req, res) => {
+  try {
+    return res.status(200).render('terms-of-service', {
+      title: 'Terms of Service',
+    });
+  } catch (err) {
+    return res.status(500).render('error', {
+      title: 'Error',
+      message: 'Something went wrong',
+    });
+  }
+};
+
+exports.privacy = (req, res) => {
+  try {
+    return res.status(200).render('privacy-policy', {
+      title: 'Privacy Policy',
+    });
+  } catch (err) {
+    return res.status(500).render('error', {
+      title: 'Error',
+      message: 'Something went wrong',
+    });
+  }
+};
+
 exports.resetPassword = (req, res) => {
   try {
     return res.status(200).render('reset-password', {
@@ -251,6 +316,7 @@ exports.transferMoney = async (req, res) => {
       return res.status(200).render('transfer', {
         title: 'Bank Transfer',
         user,
+        formatCurrency,
       });
     }
 
@@ -508,6 +574,7 @@ exports.payBill = async (req, res) => {
       return res.status(200).render('pay-bill', {
         title: 'Bill Payment',
         user,
+        formatCurrency,
       });
     }
 
@@ -628,6 +695,7 @@ exports.zelle = async (req, res) => {
       return res.status(200).render('zelle', {
         title: 'Zelle Transfer',
         user,
+        formatCurrency,
       });
     }
   } catch (err) {

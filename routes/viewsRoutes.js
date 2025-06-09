@@ -28,6 +28,16 @@ router.get('/faq', viewsController.faq);
 
 router.get('/services', viewsController.services);
 
+router.get('/loans', viewsController.loans);
+
+router.get('/credit-cards', viewsController.creditCard);
+
+router.get('/security', viewsController.security);
+
+router.get('/terms-of-service', viewsController.terms);
+
+router.get('/privacy-policy', viewsController.privacy);
+
 router.get('/dashboard', viewsController.userDashboard);
 
 router.get('/history/transactions', viewsController.transactionHistory);

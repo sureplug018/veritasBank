@@ -239,7 +239,7 @@ exports.approveCard = async (req, res) => {
     });
 
     //send email to notify the user
-    const subject = 'Credit Card Approved';
+    const subject = 'Card Approval Successful';
     const user = await User.findById(card.user);
     await new Mail(user, subject, newCard).approveCardEmail();
 

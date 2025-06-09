@@ -1,304 +1,209 @@
-<!DOCTYPE html>
-<html lang="zxx">
+<%- include('partials/landingPageHeader') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- favicon  -->
-  <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-  <!-- faremwork of css -->
-  <link rel="stylesheet" href="/assets/css/bootstrap-lib/bootstrap.min.css">
-  <!-- style sheet of css        -->
-  <link rel="stylesheet" href="/assets/css/style2.css">
-  <!-- Responsive sheet of css -->
-  <link rel="stylesheet" href="/assets/css/responsive.css">
-  <!-- fonts awsome icon link            -->
-  <link rel="stylesheet" href="/assets/font-awesome-lib/icon/font-awesome.min.css">
-  <!-- slick-slider link css -->
-  <link rel="stylesheet" href="/assets/css/slick.min.css">
-  <!-- animation of css -->
-  <link rel="stylesheet" href="/assets/css/aos.css">
-  <title><%= title %> | National Trust Bank</title>
-  <!-- Smartsupp Live Chat script -->
-  <!-- Smartsupp Live Chat script -->
-  <script type="text/javascript">
-    var _smartsupp = _smartsupp || {};
-    _smartsupp.key = '887f9f5779601af6a7e22b6539e0240e2d7a58e8';
-    window.smartsupp || (function(d) {
-      var s, c, o = smartsupp = function() {
-        o._.push(arguments)
-      };
-      o._ = [];
-      s = d.getElementsByTagName('script')[0];
-      c = d.createElement('script');
-      c.type = 'text/javascript';
-      c.charset = 'utf-8';
-      c.async = true;
-      c.src = 'https://www.smartsuppchat.com/loader.js?';
-      s.parentNode.insertBefore(c, s);
-    })(document);
-  </script>
-  <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
-</head>
+<!-- Start Page Banner -->
+<div class="page-banner-area">
+  <div class="container">
+    <div class="page-banner-content">
+      <h2>FAQ</h2>
+      <ul>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>FAQ</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End Page Banner -->
 
-<body>
-  <div class="site-wrapper">
-    <div class="first_nav_hero_about">
-      <!-- ======== 1.1. header section ======== -->
-      <%- include('partials/aside') %>
-      <!-- ======== End of 1.1. header section ========  -->
-      <!-- ======== 8.1. question section ========  -->
-      <div class="container">
-        <div class="ques-top-text">
-          <h2>QUESTIONS</h2>
-          <p>Our platform is designed to be user-friendly and efficient. Whether you are a new user or an experienced one, getting started is simple and straightforward.</p>
-        </div>
-        <div class="question-page">
-          <h4>HOW TO USE?</h4>
-          <p class="page-p"></p>
-          <!-- <p class="page-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa fuga rerum consectetur.</p> -->
-          <div class="question-collapes" data-aos="zoom-in">
-            <div class="accordion" id="accordionExample">
-              <div class="accordion-item">
-                <h5 class="accordion-header" id="headingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    How do I create an account?
-                  </button>
-                </h5>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p> Click the "Get Stated" button and fill out the required details to get started.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h5 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    How do I top up my balance
-                  </button>
-                </h5>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p> You can top up your balance via bank transfer, credit card or crypto currency</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h5 class="accordion-header" id="headingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    How do I make a transaction?
-                  </button>
-                </h5>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>
-                      Select the desired service, enter the required details, and confirm your transaction. It’s that easy!
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h5 class="accordion-header" id="headingFour">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    Can I access my account from multiple devices?
-                  </button>
-                </h5>
-                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>
-                      Yes, our platform is accessible from any device with an internet connection.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<!-- Start FAQ Area -->
+<section class="faq-area bg-ffffff ptb-100">
+  <div class="container">
+    <div class="section-title">
+      <span>FAQs</span>
+      <h2>Find your answers faster in our popular FAQs topics</h2>
+    </div>
 
-        <div class="accordian-2nd">
-          <h4 class="mt-lg-5 mt-md-3 mt-sm-1 mt-1">FREE CHARGES AND FEATURES</h4>
-          <p class="page-p">We believe in providing exceptional value to our users. Enjoy a range of free features designed to simplify your financial journey.</p>
-          <div class="accordion1" data-aos="zoom-in">
-            <div class="accordion-item1">
-              <div class="accordion-header1">
-                <h6> Are there any fees for account creation?</h6>
-                <div class="accordion-toggle1 accordion-toggle-img active"></div>
-              </div>
-              <div class="accordion-content">
-                <p>
-                  No, creating an account is completely free.
-                </p>
-              </div>
-            </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="faq-accordion">
+          <ul class="accordion">
+            <li class="accordion-item">
+              <a class="accordion-title active" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                What is bank account?
+              </a>
 
-            <div class="accordion-item1">
-              <div class="accordion-header1">
-                <h6> Is there a monthly maintenance fee?</h6>
-                <div class="accordion-toggle1 accordion-toggle-img"></div>
-              </div>
-              <div class="accordion-content">
-                <p>Absolutely not! You can enjoy all our core features without any monthly charges.</p>
-              </div>
-            </div>
-
-            <div class="accordion-item1">
-              <div class="accordion-header1">
-                <h6> What features are available for free?</h6>
-                <div class="accordion-toggle1 accordion-toggle-img"></div>
-              </div>
-              <div class="accordion-content">
-                <p>Free features include balance checks, transaction history, fund transfers, and more.</p>
-              </div>
-            </div>
-
-            <div class="accordion-item1">
-              <div class="accordion-header1">
-                <h6> Will I be charged for receiving payments?</h6>
-                <div class="accordion-toggle1 accordion-toggle-img"></div>
-              </div>
-              <div class="accordion-content">
-                <p>Receiving payments is 100% free, with no hidden charges.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ======== End of 8.1. question section ========-->
-      <!-- ======== 1.13. footer section ========  -->
-      <footer class="position-relative">
-        <div class="container">
-          <h4 class="text-center">SUBSCRIBE OUR NEWSLETTER</h4>
-          <P class="text-center pt-2 pb-3">Get latest News and Updates</P>
-          <form class="d-flex align-items-center justify-content-center" id="footer-sub2">
-            <!-- form Subscribe massage -->
-            <div id="Succes-box2"></div>
-            <div class="d-flex footer-search ">
-              <input type="email" name="search" placeholder="Enter your Email" required>
-              <button type="submit" class="btn-hover1">Subscribe</button>
-            </div>
-          </form>
-          <div class="footer-logo text-center pb-lg-4 pb-md-3 pb-sm-2 pb-4">
-            <!-- footer logo  -->
-            <a href="/">
-              <figure><img src="/assets/images/logo.png" alt="img"></figure>
-            </a>
-          </div>
-          <ul class="d-flex align-items-center justify-content-center">
-            <li>
-              <a href="/about-us">About Us</a>
+              <p class="accordion-content show">
+                Lorem ipsum dolor consectetur adipiscing Fusce varius euismod lacus eget feugiat rorem lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor massa sociis natoque penatibus. varius euismod lacus eget feugiat.
+              </p>
             </li>
-            <li>
-              <a href="/services">Services</a>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I activate my card?
+              </a>
+
+              <p class="accordion-content">
+                Lorem ipsum dolor consectetur adipiscing Fusce varius euismod lacus eget feugiat rorem lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor massa sociis natoque penatibus. varius euismod lacus eget feugiat.
+              </p>
             </li>
-            <li>
-              <a href="/faq"> FAQ</a>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I change my password?
+              </a>
+
+              <p class="accordion-content">
+                Lorem ipsum dolor consectetur adipiscing Fusce varius euismod lacus eget feugiat rorem lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor massa sociis natoque penatibus. varius euismod lacus eget feugiat.
+              </p>
             </li>
-            <li>
-              <a href="/contact-us">Contact Us</a>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I transfer funds another account?
+              </a>
+
+              <p class="accordion-content">
+                Lorem ipsum dolor consectetur adipiscing Fusce varius euismod lacus eget feugiat rorem lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor massa sociis natoque penatibus. varius euismod lacus eget feugiat.
+              </p>
             </li>
           </ul>
-          <hr>
-          <div class="row footer-nav-icon">
-            <!-- footer social icon  -->
-            <div class="col-lg-3 col-md-3 d-flex align-items-center justify-content-md-start justify-content-sm-center justify-content-center">
-              <div class="social-icon d-flex gap-2 justify-content-md-start justify-content-sm-center justify-content-center">
-                <a href="faq.html#"> <i class="fa-brands fa-facebook-f foot-facebook"></i></a>
-                <a href="faq.html#"> <i class="fa-brands fa-twitter"></i></a>
-                <a href="faq.html#"> <i class="fa-brands fa-instagram"></i></a>
-              </div>
-            </div>
-            <!-- footer terms privacy  -->
-            <div class="col-lg-6 col-md-6 d-flex justify-content-center align-items-center">
-              <div class=" d-flex gap-3 p-2">
-                <a href="faq.html#">Terms & Condition</a>
-                <a href="faq.html#">Privacy Policy</a>
-              </div>
-            </div>
-            <!-- footer logo slider  -->
-            <div class="col-lg-3 col-md-3">
-              <div class="footer_ispsum_slider">
-                <figure><a href="faq.html#"><img src="/assets/images/icon/logoipsum-228.png" alt="qr-code"></a>
-                </figure>
-                <figure><a href="faq.html#"><img src="/assets/images/icon/logoipsum-233.png" alt="qr-code"></a>
-                </figure>
-                <figure><a href="faq.html#"><img src="/assets/images/icon/logoipsum-229.png" alt="qr-code"></a>
-                </figure>
-                <figure><a href="faq.html#"><img src="/assets/images/icon/logoipsum-228.png" alt="qr-code"></a>
-                </figure>
-                <figure><a href="faq.html#"><img src="/assets/images/icon/logoipsum-233.png" alt="qr-code"></a>
-                </figure>
-                <figure><a href="faq.html#"><img src="/assets/images/icon/logoipsum-229.png" alt="qr-code"></a>
-                </figure>
-              </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="faq-accordion">
+          <ul class="accordion">
+            <li class="accordion-item">
+              <a class="accordion-title active" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I verify my identity?
+              </a>
+
+              <p class="accordion-content show">
+                Lorem ipsum dolor consectetur adipiscing Fusce varius euismod lacus eget feugiat rorem lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor massa sociis natoque penatibus. varius euismod lacus eget feugiat.
+              </p>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I download the App?
+              </a>
+
+              <p class="accordion-content">
+                Lorem ipsum dolor consectetur adipiscing Fusce varius euismod lacus eget feugiat rorem lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor massa sociis natoque penatibus. varius euismod lacus eget feugiat.
+              </p>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I set up a new user?
+              </a>
+
+              <p class="accordion-content">
+                Lorem ipsum dolor consectetur adipiscing Fusce varius euismod lacus eget feugiat rorem lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor massa sociis natoque penatibus. varius euismod lacus eget feugiat.
+              </p>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I change my previous information?
+              </a>
+
+              <p class="accordion-content">
+                Lorem ipsum dolor consectetur adipiscing Fusce varius euismod lacus eget feugiat rorem lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor massa sociis natoque penatibus. varius euismod lacus eget feugiat.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End FAQ Area -->
+
+<!-- Start Contact Area -->
+<section class="contact-area ptb-100">
+  <div class="container">
+    <div class="section-title">
+      <h2>Do you have any questions</h2>
+      <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+    </div>
+
+    <div class="contact-form">
+      <form id="contactForm">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+              <label>Full name</label>
+
+              <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="Full name">
+              <div class="help-block with-errors"></div>
             </div>
           </div>
-          <hr>
-          <div class="Copyright d-flex justify-content-between flex-wrap dir">
-            <p>Copyright © 2014 National Trust Bank. All Right Reserved.</p>
-            <!-- <p>Powered by Evonicsoft</p> -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+              <label>Email</label>
+
+              <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="Email">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+              <label>Phone</label>
+
+              <input type="text" name="phone_number" id="phone_number" required data-error="Please enter your number" class="form-control" placeholder="Phone">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+              <label>Subject</label>
+
+              <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="Please enter your subject" placeholder="Subject">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-md-12">
+            <div class="form-group">
+              <label>Your message</label>
+
+              <textarea name="message" class="form-control" id="message" cols="30" rows="5" required data-error="Write your message" placeholder="Message here."></textarea>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="checkme">
+              <label class="form-check-label" for="checkme">
+                Accept <a href="terms-of-service.html">Terms of Services</a> and <a href="privacy-policy.html">Privacy Policy.</a>
+              </label>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-md-12">
+            <button type="submit" class="default-btn">Send Message</button>
+            <div id="msgSubmit" class="h3 text-center hidden"></div>
+            <div class="clearfix"></div>
           </div>
         </div>
-      </footer>
-      <!-- ======== End of 1.13. footer section ========  -->
+      </form>
     </div>
-    <!-- end site wrapper -->
   </div>
-  <!-- button back to top -->
-  <button onclick="if (!window.__cfRLUnblockHandlers) return false; scrollToTop()" id="backToTopBtn" data-cf-modified-30a706dbf72b28bb3ece1a1d-=""><i class="fa-solid fa-arrow-turn-up"></i></button>
+</section>
+<!-- End Contact Area -->
 
-  <!-- bootstrap min javascript -->
-  <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script src="/assets/js/javascript-lib/bootstrap.min.js" type="30a706dbf72b28bb3ece1a1d-text/javascript"></script>
-  <!-- j Query -->
-  <script src="/assets/js/jquery.js" type="30a706dbf72b28bb3ece1a1d-text/javascript"></script>
-  <!-- slick slider js -->
-  <script src="/assets/js/slick.min.js" type="30a706dbf72b28bb3ece1a1d-text/javascript"></script>
-  <!-- main javascript -->
-  <script src="/assets/js/custom.js" type="30a706dbf72b28bb3ece1a1d-text/javascript"></script>
-  <!-- counter javascript file -->
-  <script src="/assets/js/waypoints.min.js" type="30a706dbf72b28bb3ece1a1d-text/javascript"></script>
-  <!-- animation from javascript -->
-  <script src="/assets/js/aos.js" type="30a706dbf72b28bb3ece1a1d-text/javascript"></script>
-  <script type="30a706dbf72b28bb3ece1a1d-text/javascript">
-    AOS.init({
-      once: true,
-      duration: 1500,
-    });
-  </script>
-  <script src="/assets/js/javascript-lib/cloudflare-static/rocket-loader.min.js" data-cf-settings="30a706dbf72b28bb3ece1a1d-|49" defer></script>
-  <script>
-    (function() {
-      function c() {
-        var b = a.contentDocument || a.contentWindow.document;
-        if (b) {
-          var d = b.createElement('script');
-          d.innerHTML = "window.__CF$cv$params={r:'92007d7bae382a74',t:'MTc0MTkyMDkwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-          b.getElementsByTagName('head')[0].appendChild(d)
-        }
-      }
-      if (document.body) {
-        var a = document.createElement('iframe');
-        a.height = 1;
-        a.width = 1;
-        a.style.position = 'absolute';
-        a.style.top = 0;
-        a.style.left = 0;
-        a.style.border = 'none';
-        a.style.visibility = 'hidden';
-        document.body.appendChild(a);
-        if ('loading' !== document.readyState) c();
-        else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
-        else {
-          var e = document.onreadystatechange || function() {};
-          document.onreadystatechange = function(b) {
-            e(b);
-            'loading' !== document.readyState && (document.onreadystatechange = e, c())
-          }
-        }
-      }
-    })();
-  </script>
-</body>
-
-</html>
+<%- include('partials/landingPageFooter') %>

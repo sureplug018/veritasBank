@@ -1,554 +1,295 @@
-<!DOCTYPE html>
-<html lang="zxx">
+<%- include('partials/landingPageHeader') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %> | National Trust Bank</title>
-  <!-- favicon  -->
-  <link rel="shortcut icon" href="/assets/images/fav_icon.jpeg" type="image/x-icon">
-  <!-- faremwork of css -->
-  <link rel="stylesheet" href="/assets/css/bootstrap-lib/bootstrap.min.css">
-  <!-- style sheet of css -->
-  <link rel="stylesheet" href="/assets/css/style2.css">
-  <!-- Responsive sheet of css -->
-  <link rel="stylesheet" href="/assets/css/responsive.css">
-  <!-- fonts awsome icon link  -->
-  <link rel="stylesheet" href="/assets/font-awesome-lib/icon/font-awesome.min.css">
-  <!-- slick-slider link css -->
-  <link rel="stylesheet" href="/assets/css/slick.min.css">
-  <!-- animation of css -->
-  <link rel="stylesheet" href="/assets/css/aos.css">
+<!-- Start Page Banner -->
+<div class="page-banner-area item-bg1">
+  <div class="container">
+    <div class="page-banner-content">
+      <h2>Services</h2>
+      <ul>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>Services</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End Page Banner -->
 
-  <!-- Smartsupp Live Chat script -->
-  <script type="text/javascript">
-    var _smartsupp = _smartsupp || {};
-    _smartsupp.key = '887f9f5779601af6a7e22b6539e0240e2d7a58e8';
-    window.smartsupp || (function(d) {
-      var s, c, o = smartsupp = function() {
-        o._.push(arguments)
-      };
-      o._ = [];
-      s = d.getElementsByTagName('script')[0];
-      c = d.createElement('script');
-      c.type = 'text/javascript';
-      c.charset = 'utf-8';
-      c.async = true;
-      c.src = 'https://www.smartsuppchat.com/loader.js?';
-      s.parentNode.insertBefore(c, s);
-    })(document);
-  </script>
-  <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
-</head>
-
-<body>
-
-  <div class="site-wrapper">
-    <!-- ======== 1.1. Header section ======== -->
-    <header>
-      <nav class="navbar navbar-expand-lg container pt-lg-4 pt-3 pb-lg-4 pb-3">
-        <div class="container-fluid justify-content-lg-start justify-content-between">
-          <!-- site logo -->
-          <a class="nav-logo p-0" href="/">
-            <figure><img src="/assets/images/logo.png" alt="logo"></figure>
-          </a>
-          <!-- navigation button  -->
-          <div class="d-flex gap-3 flex-row-reverse">
-            <button class="open-aside" onclick="if (!window.__cfRLUnblockHandlers) return false; open_aside()" type="button" data-cf-modified-72267b727475d805f6d64f8e-="">
-              <i class="fa-solid fa-bars"></i>
-            </button>
-            <!-- navigation bar manu  -->
-            <div class="d-flex justify-content-between gap-xl-4 gap-lg-3 w-100 align-items-center">
-              <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav d-flex justify-content-center align-items-center gap-lg-4 gap-md-3 gap-sm-2 gap-2 mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about-us">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/services">Services</a>
-                  </li>
-                  <!-- <li class="dropdown">
-                    <a class="nav-link d-flex align-item-center gap-1" href="javascript:void(0);">Pages<i class="fa-sharp fa-solid fa-sort-down"></i></a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="Pricing.html">Pricing</a></li>
-                      <li>
-                        <a class="dropdown-item" href="Testimonials.html">Testimonials</a>
-                      </li>
-                      <li><a class="dropdown-item" href="Team.html">Team</a></li>
-                      <li><a class="dropdown-item" href="Blogs.html">Blogs</a></li>
-                      <li>
-                        <a class="dropdown-item" href="BlogDetails.html">Blog Details</a>
-                      </li>
-                      <li><a class="dropdown-item" href="Error.html">404</a></li>
-                      <li>
-                        <a class="dropdown-item" href="ComingSoon.html">Coming Soon</a>
-                      </li>
-                    </ul>
-                  </li> -->
-                  <li class="nav-item">
-                    <a class="nav-link" href="/contact-us">Contact</a>
-                  </li>
-                </ul>
-              </div>
-              <% if(!user){ %>
-              <div class="search SearchModal">
-                <a class="nav-link" href="/sign-in">
-                  Sign In
-                </a>
-              </div>
-              <div>
-                <a href="/sign-up" class="hover2 down-btn" id="getStartedAnchor">Get Started</a>
-              </div>
-              <% }else { %>
-              <div>
-                <a href="/dashboard" class="hover2 down-btn" id="getStartedAnchor">Dashboard</a>
-              </div>
-              <% } %>
-
-            </div>
+<!-- Start Top Services Area -->
+<section class="top-services-area pt-100 pb-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="top-services-item">
+          <div class="icon">
+            <i class="flaticon-protection"></i>
           </div>
-        </div>
-      </nav>
-      <div class="modal searchModal">
-        <button class="close-btn d-flex" onclick="if (!window.__cfRLUnblockHandlers) return false; closeSearchModal()" data-cf-modified-72267b727475d805f6d64f8e-="">&times;</button>
-        <div class="position-relative d-flex align-items-center justify-content-center ">
-          <input type="text" placeholder="Search..." name="search">
-          <button class="search-btn">
-            <img src="/assets/images/icons/search.svg" alt="search">
-          </button>
+          <h3>
+            <a href="index.html#">Protect your card</a>
+          </h3>
+          <p>Stay safe with advanced security features that keep your transactions and personal information protected—anytime, anywhere.</p>
+          <a href="/credit-cards" class="link-btn">Learn more <i class="flaticon-right-arrow"></i></a>
         </div>
       </div>
-      <!--===== aside navigation slidebar =====-->
-      <aside>
-        <div id="mySidenav" class="right-sidbar">
-          <div class="side-nav-logo d-flex justify-content-between align-items-center ps-2 pe-1 nav-logo">
-            <figure class="navbar-brand">
-              <a href="/">
-                <img src="/assets/images/logo.png" alt="Logo">
-              </a>
-            </figure>
-            <button class="fa-solid fa-xmark" onclick="if (!window.__cfRLUnblockHandlers) return false; close_aside()" data-cf-modified-72267b727475d805f6d64f8e-=""></button>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="top-services-item">
+          <div class="icon">
+            <i class="flaticon-online-banking"></i>
           </div>
-          <ul class="pt-4">
-            <li class="nav-item">
-              <a aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="/about-us">About</a>
-            </li>
-            <li class="nav-item">
-              <a href="/services">Services</a>
-            </li>
-            <li class="nav-item">
-              <a href="/contact-us">Contact</a>
-            </li>
-            <% if(!user){ %>
-            <li class="nav-item">
-              <a href="/sign-in">Sign In</a>
-            </li>
-            <li class="nav-item">
-              <a href="/sign-up">Sign Up</a>
-            </li>
-            <% }else { %>
-            <li class="nav-item">
-              <a href="/dashboard">Dashboard</a>
-            </li>
-            <% } %>
+          <h3>
+            <a href="index.html#">Online banking</a>
+          </h3>
+          <p>Manage your money with ease through our secure and user-friendly online platform—built for your convenience and control.</p>
+          <!-- <a href="#" class="link-btn">See more details <i class="flaticon-right-arrow"></i></a> -->
+        </div>
+      </div>
 
+      <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
+        <div class="top-services-item">
+          <div class="icon">
+            <i class="flaticon-mobile-app"></i>
+          </div>
+          <h3>
+            <a href="index.html#">Discover new features</a>
+          </h3>
+          <p>Explore smarter ways to save, send, and grow your funds with tools designed to make everyday banking simpler and more powerful.</p>
+          <!-- <a href="#" class="link-btn">Download the app <i class="flaticon-right-arrow"></i></a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Top Services Area -->
 
-            <!-- <li class="nav-item">
-              <div class="d-flex align-items-center justify-content-between" id="slid-btn">
-                <button class="a-slid page-btn">Pages</button>
-                <i class="fa-solid fa-caret-down pe-2"></i>
-              </div>
-              <ul id="slid-drop">
-                <li><a href="Pricing.html">Pricing</a></li>
-                <li>
-                  <a href="Testimonials.html">Testimonials</a>
-                </li>
-                <li><a href="Team.html">Team</a></li>
-                <li><a href="Blogs.html">Blogs</a></li>
-                <li>
-                  <a href="BlogDetails.html">Blog Details</a>
-                </li>
-                <li><a href="Error.html">404</a></li>
-                <li>
-                  <a href="ComingSoon.html">Coming Soon</a>
-                </li>
-              </ul>
-            </li> -->
+<!-- Start Services Area -->
+<section class="services-area pt-100 pb-70">
+  <div class="container">
+    <div class="section-title">
+      <span>Banking Services</span>
+      <h2>Our bank proudly offers a wide range of trusted financial services to support your needs.</h2>
+    </div>
+
+    <div class="services-slider owl-carousel owl-theme">
+      <div class="single-services-item">
+        <div class="icon">
+          <i class="flaticon-mobile-banking"></i>
+        </div>
+        <h3><a href="#">Mobile Banking</a></h3>
+        <p>Access your account, make transfers, and manage finances anytime with our secure mobile banking platform.</p>
+        <!-- <a href="#" class="learn-btn">Learn more <i class="flaticon-right-arrow"></i></a> -->
+      </div>
+
+      <div class="single-services-item">
+        <div class="icon">
+          <i class="flaticon-credit-card"></i>
+        </div>
+        <h3><a href="/credit-cards">Credit Cards</a></h3>
+        <p>Enjoy flexibility, security, and exclusive rewards with our range of credit card options tailored to your lifestyle.</p>
+        <a href="/credit-cards" class="learn-btn">Learn more <i class="flaticon-right-arrow"></i></a>
+      </div>
+
+      <div class="single-services-item">
+        <div class="icon">
+          <i class="flaticon-payment-security"></i>
+        </div>
+        <h3><a href="#">Secure Payment</a></h3>
+        <p>Shop and send money with confidence using our advanced encryption and fraud protection technologies.</p>
+        <!-- <a href="#" class="learn-btn">Learn more <i class="flaticon-right-arrow"></i></a> -->
+      </div>
+
+      <div class="single-services-item">
+        <div class="icon">
+          <i class="flaticon-savings"></i>
+        </div>
+        <h3><a href="#">Savings Account</a></h3>
+        <p>Grow your savings with competitive interest rates and easy access to your funds when you need them.</p>
+        <!-- <a href="#" class="learn-btn">Learn more <i class="flaticon-right-arrow"></i></a> -->
+      </div>
+
+      <div class="single-services-item">
+        <div class="icon">
+          <i class="flaticon-protection"></i>
+        </div>
+        <h3><a href="#">Business Banking</a></h3>
+        <p>Streamline your business finances with powerful tools, secure transactions, and personalized service.</p>
+        <!-- <a href="#" class="learn-btn">Learn more <i class="flaticon-right-arrow"></i></a> -->
+      </div>
+
+      <div class="single-services-item">
+        <div class="icon">
+          <i class="flaticon-online-banking"></i>
+        </div>
+        <h3><a href="#">Personal Savings</a></h3>
+        <p>Plan for your future with smart savings solutions that help you reach your financial goals faster.</p>
+        <!-- <a href="#" class="learn-btn">Learn more <i class="flaticon-right-arrow"></i></a> -->
+      </div>
+
+      <div class="single-services-item">
+        <div class="icon">
+          <i class="flaticon-positive-vote"></i>
+        </div>
+        <h3><a href="#">Personal Loans</a></h3>
+        <p>Get quick access to funds for life’s needs—whether it’s for education, emergencies, or personal projects.</p>
+        <a href="/loans" class="learn-btn">Learn more <i class="flaticon-right-arrow"></i></a>
+      </div>
+
+      <div class="single-services-item">
+        <div class="icon">
+          <i class="flaticon-bank"></i>
+        </div>
+        <h3><a href="#">Business Loans</a></h3>
+        <p>Fuel your business growth with flexible loan options and expert financial guidance every step of the way.</p>
+        <a href="/loans" class="learn-btn">Learn more <i class="flaticon-right-arrow"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End Services Area -->
+
+<!-- Start App Area -->
+<!-- <section class="app-area ptb-100">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="app-content">
+          <h3>Download our App to get all kinds of banking benefits from anywhere</h3>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="app-btn">
+          <a href="#" class="app-store-btn">
+            <i class="flaticon-apple"></i>
+            Download on
+            <span>App store</span>
+          </a>
+
+          <a href="#" class="play-store-btn">
+            <i class="flaticon-google-play"></i>
+            Download on
+            <span>Google play</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- End App Area -->
+
+<!-- Start FAQ Area -->
+<section class="faq-area bg-ffffff ptb-100">
+  <div class="container">
+    <div class="section-title">
+      <span>FAQs</span>
+      <h2>Find your answers faster in our popular FAQs topics</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="faq-accordion">
+          <ul class="accordion">
+            <li class="accordion-item">
+              <a class="accordion-title active" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                What is bank account?
+              </a>
+
+              <p class="accordion-content show">
+                A bank account is a secure place to store your money, allowing you to deposit, withdraw, and manage your finances easily.
+              </p>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I activate my card?
+              </a>
+
+              <p class="accordion-content">
+                To activate your card, follow the instructions provided with your card—usually by phone, online banking, or visiting a branch.
+              </p>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I change my password?
+              </a>
+
+              <p class="accordion-content">
+                You can change your password by logging into your online banking account and navigating to the security or account settings section.
+              </p>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I transfer funds another account?
+              </a>
+
+              <p class="accordion-content">
+                Use our online banking portal or mobile app to securely transfer funds to other accounts, either within our bank or to external banks.
+              </p>
+            </li>
           </ul>
         </div>
-      </aside>
-    </header>
-    <!-- ======== End of 1.1. Header section ======== -->
-    <!-- ======== End of 2.1. Subpage_Hero section ======== -->
-    <section class="Subpage_Hero">
-      <div class="container">
-        <div class="d-flex flex-column align-items-center justify-content-center text-center" data-aos="zoom-in-up">
-          <h2>Services</h2>
-          <p>NTB delivers a wide array of financial solutions designed to elevate your digital banking experience. Our services range from seamless online banking and secure payment solutions to innovative investment platforms and personalized credit products. Each service is engineered for efficiency, convenience, and robust security, ensuring that every transaction meets the highest standards of reliability and trust. </p>
-        </div>
       </div>
-    </section>
-    <!-- ======== End of 2.1. Subpage_Hero section ======== -->
-    <!-- ======== 1.4. Services section ======== -->
-    <section class="Services">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="d-flex flex-wrap pt-lg-0 pt-5">
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/person.svg" alt="icon1">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Bank Account</h5>
-                  <p>Open a secure and reliable bank account with ease. Manage your finances anytime, anywhere.</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/transaction.svg" alt="icon2">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Easy Payment</h5>
-                  <p>Make seamless payments online and offline with our fast and secure payment solutions.</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/investment.svg" alt="icon3">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Investments</h5>
-                  <p>Grow your wealth with our expert-backed investment opportunities tailored to your goals.</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/card.svg" alt="icon4">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Funds Transfer</h5>
-                  <p>Send and receive money instantly with our secure and hassle-free fund transfer services.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="d-flex flex-column h-100 position-relative" data-aos="fade-up">
-              <h2>
-                Your Money, Your Way, <span>Our Guarantee</span>
-              </h2>
-              <p class="py-4 flex-grow-1">Experience personalized banking that puts you in control of your financial future. Our innovative services ensure secure and effortless transactions, empowering you to manage your money confidently. With tailored solutions for every financial goal, trust us to guide you every step of the way.</p>
-              <div>
-                <a href="/sign-in" class="hover2">Get Started</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ======== End of 1.4. Services section ======== -->
-    <!-- ======== 3.1. Features section ======== -->
-    <section class="Features">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7">
-            <div class="d-flex flex-column gap-4 gap-md-5 pe-lg-5">
-              <h2 data-aos="fade-up">Presenting our <span>Featured Services</span></h2>
-              <div class="position-relative" data-aos="zoom-in-up">
-                <figure class="position-relative"><img class="w-100" src="/assets/images/Services/features.webp" alt="features"></figure>
-                <div class="position-absolute" data-bs-toggle="modal" data-bs-target="#featuresVideo">
-                  <a href="javascript:void(0);"><i class="fa-solid fa-play"></i></a>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/loan.svg" alt="loan">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Loans and Instalments</h5>
-                  <p>Access flexible loans and instalment plans with NTB. Tailored to meet your needs, our financial solutions simplify borrowing.</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/wallet.svg" alt="wallet">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Digital Wallet</h5>
-                  <p>Manage your finances on the go with NTB’s Digital Wallet. Enjoy a secure, user-friendly platform designed for your everyday transactions.</p>
-                </div>
-              </div>
-              <!-- <div class="modal fade" id="featuresVideo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered h-100 my-0 mx-auto">
-                  <div class="modal-content d-flex align-items-center justify-content-center border-0">
-                    <div class="modal-body">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-                      <iframe src="https://www.youtube.com/embed/u31qwQUeGuM?si=o1Nt3XrgyYRKwJ13" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="d-flex flex-column flex-md-row flex-lg-column flex-wrap pt-lg-0 pt-md-5 pt-4">
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/bills.svg" alt="bill">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Pay Bills</h5>
-                  <p>Streamline your bill payments with NTB’s efficient digital solution. Manage all your bills in one secure platform for a hassle-free experience.</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/debit.svg" alt="card">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Debit Card</h5>
-                  <p>Experience seamless spending with NTB’s Debit Card. Enjoy enhanced security and smooth transactions every time you use it.</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/funds.svg" alt="funds">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Online Funds Transfer</h5>
-                  <p>Send money globally with NTB’s online funds transfer service. Enjoy fast, secure, and straightforward transactions at your fingertips.</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3" data-aos="flip-left">
-                <figure>
-                  <img src="/assets/images/icons/invest.svg" alt="invertment">
-                </figure>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Money investment</h5>
-                  <p>Grow your wealth with NTB’s money investment solutions. Our expert strategies and secure platform help you invest confidently.</p>
-                </div>
-              </div>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ======== End of 3.1. Features section ======== -->
-    <!-- ======== 2.3. Online section ======== -->
-    <section class="Online mb-0">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-4 col-lg-4">
-            <div class="d-flex flex-column text-md-start text-center justify-content-center" data-aos="fade-up">
-              <h2>Global Online <span>Money Transfer</span> Service</h2>
-              <p>Experience secure, fast global money transfers with NTB’s advanced platform, ensuring seamless international transactions every time.
+      <div class="col-lg-6">
+        <div class="faq-accordion">
+          <ul class="accordion">
+            <li class="accordion-item">
+              <a class="accordion-title active" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I verify my identity?
+              </a>
+
+              <p class="accordion-content show">
+                Identity verification is required for security and can be completed by submitting valid identification documents through our branch or online verification process.
               </p>
-              <div>
-                <a href="/contact-us" class="hover2">Contact Us</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-5" data-aos="zoom-in-up">
-            <figure class="position-relative">
-              <img class="w-100 h-100" src="/assets/images/About/onlineTransfer.webp" alt="onlineTransfer">
-            </figure>
-          </div>
-          <div class="col-xl-2 col-lg-3">
-            <div class="d-flex flex-lg-column justify-content-center h-100" data-aos="fade-down">
-              <div class="d-flex flex-column text-center">
-                <h2><span class="number text-white" data-final-value="93">93</span>k+</h2>
-                <p>Satisfied user</p>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <h2><span class="number d-lg-inline text-white" data-final-value="4.9">4.9</span>/5</h2>
-                <p>Client Rating</p>
-              </div>
-              <div class="d-flex flex-column text-center">
-                <h2><span class="number text-white" data-final-value="99">99</span>%</h2>
-                <p>Secure Payments</p>
-              </div>
-            </div>
-          </div>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I set up direct debit payments?
+              </a>
+
+              <p class="accordion-content">
+                You can set up direct debit payments through your online banking account or by visiting a branch to authorize recurring payments.
+              </p>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I set up a new user?
+              </a>
+
+              <p class="accordion-content">
+                To set up a new user profile, register through our website or mobile app by providing the required personal information and verification documents.
+              </p>
+            </li>
+
+            <li class="accordion-item">
+              <a class="accordion-title" href="javascript:void(0)">
+                <i class='bx bx-plus'></i>
+                How do I change my previous information?
+              </a>
+
+              <p class="accordion-content">
+                You can update your personal information by logging into your account and editing your profile, or by contacting our customer support team.
+              </p>
+            </li>
+          </ul>
         </div>
       </div>
-    </section>
-    <!-- ======== End of 2.3. Online section ======== -->
-    <!-- ======== 1.12. footer section ======== -->
-    <footer>
-      <div class="container">
-        <div class="d-flex flex-column align-items-center justify-content-center gap-lg-5 gap-md-4">
-          <h2>Get Latest Updates</h2>
-          <form class="d-flex justify-content-center align-items-center gap-lg-4 w-100">
-            <input type="email" placeholder="Enter Your Email" required name="footerEmail">
-            <button type="submit" class="hover1">Subscribe</button>
-          </form>
-          <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <img src="/assets/images/icons/Confirmation_1.gif" alt="submitIcon">
-                <div>
-                  <h4>Response Submitted</h4>
-                  <h6>Your details have been successfully submitted. Thanks</h6>
-                </div>
-                <button type="button" class="hover1 m-auto" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex justify-content-between w-100">
-          <div class="z-1 d-flex align-items-md-start align-items-center text-md-start text-center flex-column">
-            <figure>
-              <a href="index.html">
-                <img src="/assets/images/logo.png" alt="logo">
-              </a>
-            </figure>
-            <p class="m-0">NTB empowers you with secure, innovative banking solutions that transform your financial journey. Trust our legacy of excellence for every transaction. </p>
-            <div class="d-flex gap-lg-4 gap-md-3 flex-row">
-              <a href="javascript:void(0);">
-                <figure class="d-flex justify-content-center align-items-center">
-                  <i class="fa-brands fa-facebook-f"></i>
-                </figure>
-              </a>
-              <a href="javascript:void(0);">
-                <figure class="d-flex justify-content-center align-items-center">
-                  <i class="fa-brands fa-twitter"></i>
-                </figure>
-              </a>
-              <a href="javascript:void(0);">
-                <figure class="d-flex justify-content-center align-items-center"><i class="fa-brands fa-instagram"></i>
-                </figure>
-              </a>
-              <a href="javascript:void(0);">
-                <figure class="d-flex justify-content-center align-items-center"><i class="fa-brands fa-linkedin"></i>
-                </figure>
-              </a>
-            </div>
-          </div>
-          <div class="d-flex flex-column gap-lg-4 d-flex align-items-md-start align-items-center text-md-start text-center">
-            <h5>Contact US</h5>
-            <ul>
-              <li><a href="javascript:void(0);">120 Genève NR21, West Lancashire, England</a></li>
-              <li>
-                Need help? Call us
-                <a href="javascript:void(0);">
-                  <span class="d-block">(+122) 34 5678 9100</span></a>
-              </li>
-              <li><a href="javascript:void(0);"><span class="__cf_email__" data-cfemail="d4a7a1a4a4bba6a094b1acb5b9a4b8b1fab7bbb9">[email&#160;protected]</span></a></li>
-            </ul>
-          </div>
-          <div class="d-flex gap-md-3 flex-column p-0 d-flex align-items-md-start align-items-center text-md-start text-center ms-0">
-            <!-- <h5>DOWNLOAD THE APP</h5>
-            <p>We suggest connecting to the apps you use for work</p>
-            <div class="d-flex gap-lg-3 gap-md-3">
-              <a href="javascript:void(0);">
-                <div class="d-flex gap-lg-3 gap-2 justify-content-center align-items-center">
-                  <figure><img src="/assets/images/icons/apple.svg" alt="apple"></figure>
-                  <div>
-                    <p>Download on the </p>
-                    <h6>App Store</h6>
-                  </div>
-                </div>
-              </a>
-              <a href="javascript:void(0);">
-                <div class="d-flex gap-lg-3 gap-2 justify-content-center align-items-center">
-                  <figure><img src="/assets/images/icons/playstore.svg" alt="playstore"></figure>
-                  <div>
-                    <p>GET IT ON</p>
-                    <h6>Google Play</h6>
-                  </div>
-                </div>
-              </a>
-            </div> -->
-          </div>
-        </div>
-        <div class="w-100 text-center py-lg-4 py-3">
-          <p>Copyright &copy; <span>2014</span> NTB. All Rights Reserved.</p>
-        </div>
-      </div>
-      <!-- scroll to top  -->
-      <div class="scrollToTop">
-        <div class="arrowUp">
-          <i class="fa-solid fa-arrow-up"></i>
-        </div>
-        <div class="water">
-          <svg viewBox="0 0 560 20" class="water_wave water_wave_back">
-            <use xlink:href="#wave"></use>
-          </svg>
-          <svg viewBox="0 0 560 20" class="water_wave water_wave_front">
-            <use xlink:href="#wave"></use>
-          </svg>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 560 20" style="display: none;">
-            <symbol id="wave">
-              <path d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z">
-              </path>
-              <path d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z">
-              </path>
-              <path d="M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z">
-              </path>
-              <path d="M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z">
-              </path>
-            </symbol>
-          </svg>
-        </div>
-      </div>
-    </footer>
-    <!-- ======== End of 1.12. footer section ======== -->
+    </div>
   </div>
+</section>
+<!-- End FAQ Area -->
 
-  <!-- bootstrap min javascript -->
-  <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script src="/assets/js/javascript-lib/bootstrap.min.js" type="abfd3cfbc977eb3be0cddf00-text/javascript"></script>
-  <!-- j Query -->
-  <script src="/assets/js/jquery.js" type="abfd3cfbc977eb3be0cddf00-text/javascript"></script>
-  <!-- slick slider js -->
-  <script src="/assets/js/slick.min.js" type="abfd3cfbc977eb3be0cddf00-text/javascript"></script>
-  <!-- main javascript -->
-  <script src="/assets/js/custom.js" type="abfd3cfbc977eb3be0cddf00-text/javascript"></script>
-  <!-- animation from javascript -->
-  <script src="/assets/js/aos.js" type="abfd3cfbc977eb3be0cddf00-text/javascript"></script>
-
-  <script src="/assets/cloudflare-static/rocket-loader.min.js" data-cf-settings="abfd3cfbc977eb3be0cddf00-|49" defer></script>
-  <script>
-    (function() {
-      function c() {
-        var b = a.contentDocument || a.contentWindow.document;
-        if (b) {
-          var d = b.createElement('script');
-          d.innerHTML = "window.__CF$cv$params={r:'9255d1b19d6c22a9',t:'MTc0MjgxNTY0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-          b.getElementsByTagName('head')[0].appendChild(d)
-        }
-      }
-      if (document.body) {
-        var a = document.createElement('iframe');
-        a.height = 1;
-        a.width = 1;
-        a.style.position = 'absolute';
-        a.style.top = 0;
-        a.style.left = 0;
-        a.style.border = 'none';
-        a.style.visibility = 'hidden';
-        document.body.appendChild(a);
-        if ('loading' !== document.readyState) c();
-        else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
-        else {
-          var e = document.onreadystatechange || function() {};
-          document.onreadystatechange = function(b) {
-            e(b);
-            'loading' !== document.readyState && (document.onreadystatechange = e, c())
-          }
-        }
-      }
-    })();
-  </script>
-</body>
-
-</html>
+<%- include('partials/landingPageFooter') %>

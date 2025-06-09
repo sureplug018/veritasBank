@@ -4,7 +4,7 @@
   .atm-card {
     width: 350px;
     height: 200px;
-    background: linear-gradient(135deg, #3006a4, #7165cf);
+    background: linear-gradient(135deg, #1a45e5, #5e72bc);
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -47,7 +47,11 @@
     <div class="card" style="margin-bottom: 10px;">
       <div class="card-body" style="display: flex; justify-content: center; padding: 20px 0;">
         <div class="atm-card">
-          <div class="chip"></div>
+          <div style="display: flex; align-items: center; flex-direction: row; gap: 200px;">
+            <div class="chip"></div>
+            <div style="font-style: italic; font-weight: bolder; font-size: larger;">Veritas</div>
+          </div>
+
           <div class="card-number"><%= String(card.cardNumber).replace(/(.{4})/g, '$1 ').trim() %></div>
           <!-- <div>Expires</div> -->
           <% const expiryDate = new Date(card.expiryDate); %>

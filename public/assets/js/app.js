@@ -65,7 +65,7 @@ function calculateSettingAsThemeString({ localStorageTheme }) {
 * Utility function to update the button text and aria-label.
 */
 function updateButton({ buttonEl, isDark }) {
-  const newCta = isDark ? "dark" : "light";
+  const newCta = isDark ? "dark" : "dark";
   buttonEl.setAttribute("aria-label", newCta);
   buttonEl.innerText = newCta;
 }
@@ -99,7 +99,7 @@ if (button) {
   * 4. Add an event listener to toggle the theme.
   */
   button.addEventListener("click", (event) => {
-    const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+    const newTheme = currentThemeSetting === "dark" ? "dark" : "dark";
 
     localStorage.setItem("theme", newTheme);
     updateButton({ buttonEl: button, isDark: newTheme === "dark" });
