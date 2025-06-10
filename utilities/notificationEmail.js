@@ -10,14 +10,14 @@ module.exports = class Mail {
     this.to = user.email;
     this.name = user.firstName; // Corrected splitting method
     this.subject = subject;
-    this.from = '"National Trust Bank" <support@ntbank.org>';
+    this.from = '"Veritas Bank" <support@veritasfounders.com>';
     this.transaction = transaction;
   }
 
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       return nodemailer.createTransport({
-        host: 'mail.privateemail.com',
+        host: 'smtp.hostinger.com',
         port: 465,
         secure: true,
         auth: {

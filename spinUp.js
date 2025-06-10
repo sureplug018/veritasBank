@@ -1,10 +1,18 @@
 const cron = require('node-cron');
+const fetch = require('node-fetch'); // or use axios
 
 function spinServer() {
-  app.get('/ping', (req, res) => {
-    res.status(200).send('Server is alive');
-    // console.log('Ping received, server is alive');
-  });
+  fetch('https://veritasfounders.com/') // use your real domain
+    .then((res) => {
+      if (res.ok) {
+        console.log('✅ Ping successful');
+      } else {
+        console.error('❌ Ping failed with status:', res.status);
+      }
+    })
+    .catch((err) => {
+      console.error('❌ Ping failed:', err.message);
+    });
 }
 
 module.exports = function () {

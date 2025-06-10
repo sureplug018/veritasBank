@@ -8,13 +8,13 @@ module.exports = class Email {
     this.to = user.email;
     this.firstName = user.firstName; // Corrected splitting method
     this.url = url;
-    this.from = '"National Trust Bank" <support@ntbank.org>';
+    this.from = '"Veritas Bank" <support@veritasfounders.com>';
   }
 
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       return nodemailer.createTransport({
-        host: 'mail.privateemail.com',
+        host: 'smtp.hostinger.com',
         secure: true,
         port: 465,
         auth: {
