@@ -26,7 +26,13 @@ exports.signup = async (req, res) => {
     middleName,
     email,
     username,
+    address,
     country,
+    state,
+    city,
+    gender,
+    zipcode,
+    dateOfBirth,
     phoneNumber,
     transactionPin,
     accountType,
@@ -42,6 +48,12 @@ exports.signup = async (req, res) => {
     'username',
     'country',
     'phoneNumber',
+    'state',
+    'city',
+    'gender',
+    'zipcode',
+    'address',
+    'dateOfBirth',
     'transactionPin',
     'accountType',
     'password',
@@ -75,6 +87,16 @@ exports.signup = async (req, res) => {
     });
   }
 
+  const paymentProof =
+    req.files && req.files.paymentProof ? req.files.paymentProof[0].path : null; // Cloudinary URL or null
+
+  if (!paymentProof) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Upload a profile photo',
+    });
+  }
+
   try {
     // check if user with the given email and unconfirmed status exits
     const existingUser = await User.findOne({ email });
@@ -101,10 +123,17 @@ exports.signup = async (req, res) => {
       middleName,
       email,
       username,
+      address,
       country,
+      state,
+      city,
+      gender,
+      zipcode,
+      dateOfBirth,
       phoneNumber,
       transactionPin,
       accountType,
+      paymentProof,
       password,
       passwordConfirm,
       confirmed: true,

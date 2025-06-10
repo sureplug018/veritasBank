@@ -1,6 +1,28 @@
 <%- include('partials/dashboardHeader') %>
 
+<style>
+  .custom-file-upload {
+    display: inline-block;
+    padding: 14px 24px;
+    cursor: pointer;
+    background-color: #1B2431;
+    border-radius: 12px;
+    font-size: 16px;
+    border: 1px solid #fff;
+    text-align: center;
+    width: 100%;
+  }
 
+  #photo {
+    display: none;
+  }
+
+  .file-name {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #333;
+  }
+</style>
 
 <section class="auth bg-base d-flex flex-wrap">
   <div class="auth-left d-lg-block d-none">
@@ -55,10 +77,40 @@
               <input type="text" id="phoneNumber" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Phone">
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="address" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Home Address">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
             <div class="icon-field mb-16">
 
               <input type="text" id="country" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Country">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="state" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="State">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="city" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="City">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="zipcode" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Zipcode">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="text" id="gender" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Gender">
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
@@ -75,6 +127,19 @@
                 <option value="Cooperate Business Account">Cooperate Business Account</option>
                 <option value="Investment Account">Investment Account</option>
               </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+              <label for="photo" class="custom-file-upload">Upload Photo</label>
+              <input type="file" id="photo" name="photo" class="form-control" />
+              <p id="file-name" style="color: #fff;" class="file-name"></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="icon-field mb-16">
+
+              <input type="date" id="dateOfBirth" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Date of Birth">
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
@@ -131,5 +196,17 @@
       </form>
     </div>
   </div>
+  <script>
+    const fileInput = document.getElementById('photo');
+    const fileNameDisplay = document.getElementById('file-name');
 
+    fileInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        fileNameDisplay.textContent = `Selected file: ${file.name}`;
+      } else {
+        fileNameDisplay.textContent = '';
+      }
+    });
+  </script>
   <%- include('partials/dashboardFooter') %>

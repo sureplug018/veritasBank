@@ -4,7 +4,11 @@ const transactionController = require('./../controllers/transactionController');
 
 const router = express.Router();
 
-router.post('/signup', authController.signup);
+router.post(
+  '/signup',
+  transactionController.uploadPaymentProof,
+  authController.signup
+);
 
 router.post('/confirm-email/:token/', authController.confirmEmailBE);
 

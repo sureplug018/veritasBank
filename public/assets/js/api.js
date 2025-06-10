@@ -37,35 +37,14 @@ function formatCurrency(amount) {
   return Number(amount).toLocaleString();
 }
 
-const signUp = async (
-  firstName,
-  lastName,
-  middleName,
-  email,
-  username,
-  country,
-  phoneNumber,
-  transactionPin,
-  accountType,
-  password,
-  passwordConfirm
-) => {
+const signUp = async (formData) => {
   try {
     const res = await axios({
       method: 'POST',
       url: '/api/v1/users/signup',
-      data: {
-        firstName,
-        lastName,
-        middleName,
-        email,
-        username,
-        country,
-        phoneNumber,
-        transactionPin,
-        accountType,
-        password,
-        passwordConfirm,
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
       },
     });
 
@@ -618,33 +597,51 @@ if (signupForm) {
     e.preventDefault();
     document.querySelector('.btn--signup').style.opacity = '0.5';
     document.querySelector('.btn--signup').textContent = 'signing up...';
+    document.querySelector('.btn--signup').disabled = true;
 
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const middleName = document.getElementById('middleName').value;
-    const email = document.getElementById('email').value;
-    const username = document.getElementById('username').value;
-    const country = document.getElementById('country').value;
-    const phoneNumber = document.getElementById('phoneNumber').value;
-    const transactionPin = document.getElementById('transactionPin').value;
-    const accountType = document.getElementById('accountType').value;
-    const password = document.getElementById('password').value;
-    const passwordConfirm = document.getElementById('passwordConfirm').value;
+    const formData = new FormData();
 
-    await signUp(
-      firstName,
-      lastName,
-      middleName,
-      email,
-      username,
-      country,
-      phoneNumber,
-      transactionPin,
-      accountType,
-      password,
-      passwordConfirm
+    formData.append('firstName', document.getElementById('firstName').value);
+    formData.append('lastName', document.getElementById('lastName').value);
+    formData.append('middleName', document.getElementById('middleName').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('username', document.getElementById('username').value);
+    formData.append('country', document.getElementById('country').value);
+    formData.append(
+      'phoneNumber',
+      document.getElementById('phoneNumber').value
     );
+    formData.append(
+      'transactionPin',
+      document.getElementById('transactionPin').value
+    );
+    formData.append('address', document.getElementById('address').value);
+    formData.append('city', document.getElementById('city').value);
+    formData.append('state', document.getElementById('state').value);
+    formData.append('zipcode', document.getElementById('zipcode').value);
+    formData.append('gender', document.getElementById('gender').value);
+    formData.append(
+      'dateOfBirth',
+      document.getElementById('dateOfBirth').value
+    );
+    formData.append('paymentProof', document.getElementById('photo').value);
+    formData.append(
+      'accountType',
+      document.getElementById('accountType').value
+    );
+    formData.append('password', document.getElementById('password').value);
+    formData.append(
+      'passwordConfirm',
+      document.getElementById('passwordConfirm').value
+    );
+    formData.append(
+      'paymentProof',
+      document.getElementById('photo').files[0]
+    );
+
+    await signUp(formData);
     document.querySelector('.btn--signup').style.opacity = '1';
+    document.querySelector('.btn--signup').disabled = false;
     document.querySelector('.btn--signup').textContent = 'sign up';
   });
 }
