@@ -1,14 +1,11 @@
 const cron = require('node-cron');
-const fetch = require('node-fetch'); // or use axios
+const axios = require('axios');
 
 function spinServer() {
-  fetch('https://veritasfounders.com/') // use your real domain
+  axios
+    .get('https://veritasfounders.com/')
     .then((res) => {
-      if (res.ok) {
-        console.log('✅ Ping successful');
-      } else {
-        console.error('❌ Ping failed with status:', res.status);
-      }
+      console.log('✅ Ping successful:', res.status);
     })
     .catch((err) => {
       console.error('❌ Ping failed:', err.message);
@@ -17,8 +14,7 @@ function spinServer() {
 
 module.exports = function () {
   cron.schedule('*/10 * * * *', () => {
-    console.log('Running cron job every minute');
-    // Here you can call the function to process investments
+    console.log('⏰ Running cron job every 10 minutes');
     spinServer();
   });
 };
