@@ -81,6 +81,18 @@
 </section>
 <!-- End Top Services Area -->
 
+
+<!-- Start Banking Area -->
+<section class="banking-area pb-100">
+  <div class="container">
+    <div class="row align-items-center">
+      <video src="/assets/images/veritas-card-video.mp4" autoplay loop muted playsinline preload="none" loading="lazy" style="width: 100%; height: auto;">
+      </video>
+    </div>
+  </div>
+</section>
+
+
 <!-- Start Banking Area -->
 <section class="banking-area pb-100">
   <div class="container">
@@ -531,5 +543,24 @@
   </div>
 </div>
 <!-- End Partner Area -->
+
+<script>
+  const videos = document.querySelectorAll('video[data-src]');
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        video.src = video.dataset.src;
+        video.load(); // start loading the video
+        observer.unobserve(video);
+      }
+    });
+  }, {
+    rootMargin: '0px 0px 200px 0px'
+  });
+
+  videos.forEach(video => observer.observe(video));
+</script>
 
 <%- include('partials/landingPageFooter') %>
