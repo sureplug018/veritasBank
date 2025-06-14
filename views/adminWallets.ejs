@@ -1,0 +1,130 @@
+<%- include('partials/dashboardHeaderNav') %>
+
+<div class="col-lg-12">
+  <div class="card">
+    <div style="display: flex; justify-content: space-between;" class="card-header">
+      <h5 class="card-title mb-0">Wallets</h5>
+      <button data-bs-toggle="modal" data-bs-target="#addWalletModal" class="btn btn-primary-600">Add Wallet</button>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <% if(wallets.length > 0){ %>
+        <table class="table bordered-table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">S/N</th>
+              <th scope="col">Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% wallets.forEach((wallet, i) => { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= wallet.name %></td>
+              <td><%= wallet.address %></td>
+              <td>
+                <a data-bs-toggle="dropdown" aria-expanded="false" href="javascript:void(0);" style="padding: 10px 40px; border-radius: 5px;" class="w-32-px h-32-px text-primary-600 d-inline-flex align-items-center justify-content-center">
+                  <iconify-icon icon="lucide:edit"></iconify-icon>
+                  </iconify-icon> Edit
+                </a>
+                <ul class="dropdown-menu p-12 border bg-base shadow">
+                  <li>
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModalEdit" data-wallet-id="<%= wallet.id %>" class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10 edit-wallet-modal-btn">
+                      <!-- <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon> -->
+                      Edit Wallet
+                    </button>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <% }); %>
+
+          </tbody>
+        </table>
+        <% }else{ %>
+        <p style="text-align: center;">No Wallet Found!</p>
+
+        <% } %>
+      </div>
+    </div>
+  </div><!-- card end -->
+</div>
+
+<div class="modal fade" id="addWalletModal" tabindex="-1" aria-labelledby="addWalletModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+        <h1 class="modal-title fs-5" id="addWalletModalLabel">Add Wallet</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-24">
+        <form class="add-wallet-form">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Wallet </label>
+              <input type="text" id="wallet" class="form-control radius-8" placeholder="Wallet">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Address </label>
+              <input type="text" id="address" class="form-control radius-8" placeholder="Address">
+            </div>
+            <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+              <!-- <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
+                Cancel
+              </button> -->
+              <button class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8 add-wallet-btn">
+                Add Wallet
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Event -->
+<div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalEditLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+    <div class="modal-content radius-16 bg-base">
+      <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+        <h1 class="modal-title fs-5" id="exampleModalEditLabel">Edit Wallet</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-24">
+        <form class="reply-support-form">
+          <div class="row">
+            <!-- <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Base Currency </label>
+              <input type="text" id="baseCurrency1" class="form-control radius-8" placeholder="Base Currency">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Target Currency </label>
+              <input type="text" id="targetCurrency1" class="form-control radius-8" placeholder="Target Currency">
+            </div> -->
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+              <label class="form-label fw-semibold text-primary-light text-sm mb-8">Wallet </label>
+              <input type="text" id="wallet1" class="form-control radius-8" placeholder="Wallet">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-20">
+                <label class="form-label fw-semibold text-primary-light text-sm mb-8">Address </label>
+                <input type="text" id="address1" class="form-control radius-8" placeholder="Address">
+              </div>
+            <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+              <!-- <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
+                Cancel
+              </button> -->
+              <button class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8 edit-wallet-btn">
+                Edit Wallet
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/dashboardFooterNav') %>

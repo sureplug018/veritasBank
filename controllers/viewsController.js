@@ -1060,3 +1060,26 @@ exports.pendingDeposits = async (req, res) => {
     });
   }
 };
+
+exports.wallets = async (req, res) => {
+  try {
+    const user = res.locals.user;
+    if (!user) {
+      return res.status(302).redirect('/sign-in');
+    }
+    if (user.role === 'admin') {
+      const wallets = await Wallet.find();
+      return res.status(200).render('adminWallets', {
+        title: 'Wallets',
+        user,
+        wallets,
+      });
+    }
+    return res.status(302).redirect('/sign-in');
+  } catch (err) {
+    return res.status(500).render('error', {
+      title: 'Error',
+      message: 'Something went wrong',
+    });
+  }
+};

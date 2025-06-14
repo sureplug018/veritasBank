@@ -43,6 +43,7 @@
               <option value="Inter-Bank Transfer">Inter-Bank Transfer</option>
               <option value="Local Transfer">Local Transfer</option>
               <option value="International Transfer">International Transfer</option>
+              <option value="Crypto">Crypto</option>
             </select>
           </div>
           <!-- Crypto deposit -->
@@ -76,10 +77,15 @@
             <label class="form-label">Account Type</label>
             <input type="text" id="accountType" class="form-control" placeholder="Account Type">
           </div>
-          <div class="col-md-6 address" style="display: none;">
-            <label class="form-label">Address</label>
-            <input type="text" id="address" class="form-control" placeholder="Address">
+          <div class="col-md-6 wallet" style="display: none;">
+            <label class="form-label">Wallet Name</label>
+            <input type="text" id="wallet" class="form-control" placeholder="Wallet Name">
           </div>
+          <div class="col-md-6 address" style="display: none;">
+            <label class="form-label">Wallet Address</label>
+            <input type="text" id="address" class="form-control" placeholder="Wallet Address">
+          </div>
+
 
           <div class="col-md-6 swiftCode" style="display: none;">
             <label class="form-label">BIC/Swift Code</label>
@@ -147,6 +153,7 @@
         document.querySelector('.description').style.display = 'block'
         document.querySelector('.routingNumber').style.display = 'none'
         document.querySelector('.accountType').style.display = 'none'
+        document.querySelector('.wallet').style.display = 'none'
       } else if (selectPaymentGateway.value === 'Local Transfer') {
         document.querySelector('.amount').style.display = 'block'
         document.querySelector('.accountNumber').style.display = 'block'
@@ -159,6 +166,7 @@
         document.querySelector('.description').style.display = 'block'
         document.querySelector('.routingNumber').style.display = 'block'
         document.querySelector('.accountType').style.display = 'block'
+        document.querySelector('.wallet').style.display = 'none'
       } else if (selectPaymentGateway.value === 'International Transfer') {
         document.querySelector('.amount').style.display = 'block'
         document.querySelector('.accountNumber').style.display = 'block'
@@ -171,6 +179,20 @@
         document.querySelector('.description').style.display = 'block'
         document.querySelector('.routingNumber').style.display = 'none'
         document.querySelector('.accountType').style.display = 'none'
+        document.querySelector('.wallet').style.display = 'none'
+      } else if (selectPaymentGateway.value === 'Crypto') {
+        document.querySelector('.amount').style.display = 'block'
+        document.querySelector('.accountNumber').style.display = 'none'
+        document.querySelector('.sortCode').style.display = 'none'
+        document.querySelector('.address').style.display = 'block'
+        document.querySelector('.receiverName').style.display = 'none'
+        document.querySelector('.IBAN').style.display = 'none'
+        document.querySelector('.swiftCode').style.display = 'none'
+        document.querySelector('.bankName').style.display = 'none'
+        document.querySelector('.description').style.display = 'block'
+        document.querySelector('.routingNumber').style.display = 'none'
+        document.querySelector('.accountType').style.display = 'none'
+        document.querySelector('.wallet').style.display = 'block'
       }
     })
   }

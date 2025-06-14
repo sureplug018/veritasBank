@@ -220,6 +220,7 @@ const transfer = async (
   IBAN,
   swiftCode,
   bankName,
+  wallet,
   address,
   BIC,
   sortCode,
@@ -240,6 +241,7 @@ const transfer = async (
         IBAN,
         swiftCode,
         bankName,
+        wallet,
         address,
         BIC,
         sortCode,
@@ -258,6 +260,16 @@ const transfer = async (
           `You've sent $${formatCurrency(transaction.amount)} to ${
             transaction.receiverName
           } successfully!`,
+          '/history/transactions'
+        );
+      } else if (transaction.gateway === 'Crypto') {
+        showAlert2(
+          'success',
+          `Your transfer of $${formatCurrency(transaction.amount)} worth of ${
+            transaction.wallet
+          } to ${
+            transaction.address
+          } is currently under review and awaiting approval. Thank you for your request!`,
           '/history/transactions'
         );
       } else if (
@@ -431,6 +443,29 @@ const updatePassword = async (passwordCurrent, password, passwordConfirm) => {
   }
 };
 
+const addWallet = async (name, address) => {
+  try {
+    const res = await axios({
+      method: 'post',
+      url: '/api/v1/wallets/create-wallet',
+      data: {
+        name,
+        address,
+      },
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'Wallet added Successfully!');
+      window.setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }
+  } catch (err) {
+    console.log(err);
+    showAlert('error', err.response.data.message);
+  }
+};
+
 const kyc = async (formData) => {
   try {
     const res = await axios({
@@ -579,6 +614,7 @@ const adminSignInForm = document.querySelector('.admin-form-login');
 const allUserMailForm = document.querySelector('.all-user-mail-form');
 const zelleForm = document.querySelector('.zelle-form');
 const logoutUserBtn = document.querySelectorAll('.signOut-user-btn');
+const addWalletForm = document.querySelector('.add-wallet-form');
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -589,6 +625,27 @@ if (logoutUserBtn) {
       e.preventDefault();
       await logoutUser();
     });
+  });
+}
+
+if (addWalletForm) {
+  addWalletForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = document.querySelector('.add-wallet-btn');
+
+    submitBtn.textContent = 'Processing...';
+    submitBtn.ariaDisabled = true;
+    submitBtn.style.opacity = '0.5';
+
+    const name = document.getElementById('wallet').value;
+    const address = document.getElementById('address').value;
+
+    await addWallet(name, address);
+
+    submitBtn.textContent = 'Invest Now';
+    submitBtn.ariaDisabled = false;
+    submitBtn.style.opacity = '1';
   });
 }
 
@@ -634,10 +691,7 @@ if (signupForm) {
       'passwordConfirm',
       document.getElementById('passwordConfirm').value
     );
-    formData.append(
-      'paymentProof',
-      document.getElementById('photo').files[0]
-    );
+    formData.append('paymentProof', document.getElementById('photo').files[0]);
 
     await signUp(formData);
     document.querySelector('.btn--signup').style.opacity = '1';
@@ -862,6 +916,7 @@ if (transferBtn) {
     const bankName = document.getElementById('bankName')?.value || null;
     const address = document.getElementById('address')?.value || null;
     const BIC = document.getElementById('BIC')?.value || null;
+    const wallet = document.getElementById('wallet')?.value || null;
     const sortCode = document.getElementById('sortCode')?.value || null;
     const description = document.getElementById('description')?.value || null;
     const routingNumber =
@@ -878,6 +933,7 @@ if (transferBtn) {
       IBAN,
       swiftCode,
       bankName,
+      wallet,
       address,
       BIC,
       sortCode,
@@ -1173,6 +1229,50 @@ if (declineTransactionBtn) {
         button.disabled = false;
       }
     });
+  });
+}
+
+const editWalletModal = document.querySelectorAll('.edit-wallet-modal-btn');
+const editWalletBtn = document.querySelector('.edit-wallet-btn');
+let walletId = null;
+editWalletModal.forEach((button) => {
+  button.addEventListener('click', function () {
+    walletId = this.dataset.walletId;
+  });
+});
+if (editWalletBtn) {
+  editWalletBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    if (!walletId) return;
+    editWalletBtn.style.opacity = '0.5';
+    editWalletBtn.ariaDisabled = true;
+    editWalletBtn.textContent = 'Saving...';
+    const info = {
+      name: document.getElementById('wallet1').value,
+      address: document.getElementById('address1').value,
+    };
+    try {
+      const response = await axios.patch(
+        `/api/v1/wallets/edit-wallet/${walletId}`,
+        info
+      );
+      if (response.data.status === 'success') {
+        showAlert('success', 'Wallet Edit successful!');
+        window.setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }
+    } catch (err) {
+      console.log(err);
+      showAlert(
+        'error',
+        err.response ? err.response.data.message : 'Error Sending Reply'
+      );
+    } finally {
+      editWalletBtn.style.opacity = '1';
+      editWalletBtn.disabled = false;
+      editWalletBtn.textContent = 'Edit Wallet';
+    }
   });
 }
 

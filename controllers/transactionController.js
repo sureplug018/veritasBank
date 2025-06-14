@@ -199,6 +199,7 @@ exports.transfer = async (req, res) => {
     accountNumber,
     IBAN,
     swiftCode,
+    wallet,
     bankName,
     address,
     sortCode,
@@ -329,6 +330,29 @@ exports.transfer = async (req, res) => {
     }
   }
 
+  if (gateway === 'Crypto') {
+    if (!wallet) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'Wallet name is required',
+      });
+    }
+
+    if (!address) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'Wallet Address is required',
+      });
+    }
+
+    if (!amount) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'Amount is required',
+      });
+    }
+  }
+
   if (!description) {
     return res.status(400).json({
       status: 'fail',
@@ -422,6 +446,7 @@ exports.transfer = async (req, res) => {
       IBAN,
       swiftCode,
       bankName,
+      wallet,
       address,
       sortCode,
       description,

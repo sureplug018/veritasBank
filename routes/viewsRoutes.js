@@ -101,6 +101,8 @@ router.get('/admin/send-mail', viewsController.sendALlUsersMail);
 
 router.get('/admin/kyc-management', viewsController.kyc);
 
+router.get('/admin/wallets', viewsController.wallets);
+
 router.get('/admin/pending-deposits', viewsController.pendingDeposits);
 
 router.get('/admin/pending-transfers', viewsController.pendingTransfers);
