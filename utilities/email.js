@@ -8,7 +8,7 @@ module.exports = class Email {
     this.to = user.email;
     this.firstName = user.firstName; // Corrected splitting method
     this.url = url;
-    this.from = '"Veritas Bank" <info@veritasfounders.com>';
+    this.from = '"Veritas Bank" <support@veritasfounders.com>';
   }
 
   newTransport() {

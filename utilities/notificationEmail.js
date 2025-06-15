@@ -10,7 +10,7 @@ module.exports = class Mail {
     this.to = user.email;
     this.name = user.firstName; // Corrected splitting method
     this.subject = subject;
-    this.from = '"Veritas Bank" <info@veritasfounders.com>';
+    this.from = '"Veritas Bank" <support@veritasfounders.com>';
     this.transaction = transaction;
   }
 
