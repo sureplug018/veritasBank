@@ -25,21 +25,24 @@
             </div>
             <!-- Rest of your HTML content -->
             <p>Dear <%= name %>,</p>
+            <p>Thank you for banking with us.</p>
             <% const time = transaction.createdAt.toLocaleTimeString() %>
             <% const date = transaction.createdAt.toLocaleDateString() %>
-            <p>We are writing to inform you that your recent transaction request (Reference Number: <%= transaction.transactionId %>)
-              dated <%= time %> <%= date %> was <%= transaction.status === 'confirmed' ? 'successfully.' : (transaction.status === 'pending' ? 'pending.' : 'declined.') %> </p>
-
+            <p>
+              We are writing to inform you that your recent transaction request (Reference Number: <%= transaction.transactionId %>) dated <%= time %> <%= date %> is successful. This status may be due to:
+            </p>
+            <ul>
+              <li>Additional verification requirements.</li>
+            </ul>
             <p>Transaction Details:
             <ul>
               <li>Amount: <%= transaction.amount %> USD</li>
               <li>Transaction Type: <%= transaction.type %>.</li>
               <li>Status: <%= transaction.status %>.</li>
-              <li>Description: <%= transaction.description %></li>
             </ul>
             </p>
             <p>
-              <%= transaction.status === 'confirmed' ? 'The funds have been processed and are now available in your account. You can view your updated account balance or transaction history by logging into your account on our platform.' : '' %>
+              We are working to process your request as quickly as possible. If any additional steps are required from your end, our team will contact you promptly.
             </p>
             <table class="btn btn-primary" role="presentation" border="0" cellpadding="0" cellspacing="0">
               <tbody>

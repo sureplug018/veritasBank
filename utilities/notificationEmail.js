@@ -139,4 +139,14 @@ module.exports = class Mail {
       throw new Error('Failed to send email');
     }
   }
+
+  async directDeposit() {
+    try {
+      await this.send('directDeposit');
+    } catch (error) {
+      console.log('Send Acknowledgement email failed:', error);
+      console.log('Mail Sent');
+      throw new Error('Failed to send email');
+    }
+  }
 };

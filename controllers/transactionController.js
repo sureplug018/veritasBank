@@ -604,20 +604,20 @@ exports.directDeposit = async (req, res) => {
 
     await user.save();
 
-    // const newTransaction = await Transaction.create({
-    //   user: user.id,
-    //   type: 'system',
-    //   gateway: 'system',
-    //   address: 'null',
-    //   amount,
-    //   status: 'confirmed',
-    //   wallet: 'null',
-    //   paymentProof: 'null',
-    // });
+    const newTransaction = await Transaction.create({
+      user: user.id,
+      type: type === 'add' ? 'deposit' : 'transfer',
+      gateway: 'system',
+      address: 'null',
+      amount,
+      status: 'confirmed',
+      wallet: 'null',
+      paymentProof: 'null',
+    });
 
-    // const subject = 'Funds Successfully Deposited to Your Account';
+    const subject = 'Transaction Successful!';
 
-    // await new Mail(user, subject, newTransaction).directDeposit();
+    await new Mail(user, subject, newTransaction).directDeposit();
 
     return res.status(200).json({
       status: 'success',
