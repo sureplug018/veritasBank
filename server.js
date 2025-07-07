@@ -29,7 +29,7 @@ mongoose
 
 // Run the cron job
 // cronJob();
-spin();
+// spin();
 
 const port = process.env.PORT;
 app.listen(port, () => {
