@@ -85,7 +85,7 @@ exports.replySupport = async (req, res) => {
 
 async function sendReplyEmail(email, subject, message) {
   const mailOptions = {
-    from: '"Veritas Bank" <support@veritasfounders.com>', // sender address
+    from: '"Veritas Bank" <support@verittasfounders.com>', // sender address
     to: email, // list of receivers
     subject: subject, // Subject line
     text: message, // plain text body
@@ -107,7 +107,7 @@ exports.sendMail = async (req, res) => {
   try {
     // Find the support message by email
     const user = await User.findById({ _id: id });
-    const email = user.email;
+    // const email = user.email;
 
     if (!user) {
       return res.status(404).json({
@@ -117,7 +117,7 @@ exports.sendMail = async (req, res) => {
     }
 
     // Send a reply email to the user
-    await sendReplyEmail(email, subject, message);
+    await Mail(user, subject, message).sendMailToAllUsers();
 
     return res.status(200).json({
       status: 'success',

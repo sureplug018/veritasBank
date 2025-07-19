@@ -3,7 +3,7 @@ const axios = require('axios');
 
 function spinServer() {
   axios
-    .get('https://veritasfounders.com/')
+    .get('https://verittasfounders.com/')
     .then((res) => {
       console.log('✅ Ping successful:', res.status);
     })
