@@ -14,7 +14,7 @@ module.exports = class Email {
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       return nodemailer.createTransport({
-        host: 'smtp.hostinger.com',
+        host: 'mail.privateemail.com',
         secure: true,
         port: 465,
         auth: {
