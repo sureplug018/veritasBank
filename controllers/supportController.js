@@ -117,7 +117,7 @@ exports.sendMail = async (req, res) => {
     }
 
     // Send a reply email to the user
-    await Mail(user, subject, message).sendMailToAllUsers();
+    await new Mail(user, subject, message).sendMailToAllUsers();
 
     return res.status(200).json({
       status: 'success',
