@@ -85,7 +85,7 @@ exports.replySupport = async (req, res) => {
 
 async function sendReplyEmail(email, subject, message) {
   const mailOptions = {
-    from: '"Veritas Bank" <support@verittasfounders.com>', // sender address
+    from: '"Verittas Bank" <support@verittasfounders.com>', // sender address
     to: email, // list of receivers
     subject: subject, // Subject line
     text: message, // plain text body
