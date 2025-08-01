@@ -518,6 +518,7 @@ exports.zelleTransfer = async (req, res) => {
         message: 'Low Balance',
       });
     }
+    user.balance = user.balance - Number(amount);
     const transferStatus = user.transferStatus;
     const transaction = await Transaction.create({
       user,
