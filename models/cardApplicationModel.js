@@ -17,7 +17,7 @@ const cardApplicationSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     email: {
       type: String,
@@ -41,6 +41,10 @@ const cardApplicationSchema = new mongoose.Schema(
     },
     amount: {
       type: Number,
+      require: true,
+    },
+    wallet: {
+      type: String,
       require: true,
     },
   },

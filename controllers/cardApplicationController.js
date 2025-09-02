@@ -14,6 +14,7 @@ exports.createCardApplication = async (req, res) => {
     country,
     amount,
     transactionPin,
+    wallet,
   } = req.body;
 
   if (!cardType) {
@@ -72,15 +73,22 @@ exports.createCardApplication = async (req, res) => {
     });
   }
 
+  if (!wallet) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Wallet is required',
+    });
+  }
+
   try {
     const user = await User.findById(req.user.id);
 
-    if (Number(amount) > user.balance) {
-      return res.status(400).json({
-        status: 'fail',
-        message: 'Low balance! Top up your balance',
-      });
-    }
+    // if (Number(amount) > user.balance) {
+    //   return res.status(400).json({
+    //     status: 'fail',
+    //     message: 'Low balance! Top up your balance',
+    //   });
+    // }
 
     if (
       !transactionPin ||
@@ -104,12 +112,13 @@ exports.createCardApplication = async (req, res) => {
       address,
       zipCode,
       country,
-      amount,
+      amount: 1500,
+      wallet,
     });
 
-    user.balance = user.balance - Number(amount);
+    // user.balance = user.balance - Number(amount);
 
-    await user.save();
+    // await user.save();
 
     //notify the admin that a user requested for card
 

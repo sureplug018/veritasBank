@@ -505,10 +505,12 @@ exports.card = async (req, res) => {
         user: user.id,
         status: 'pending',
       });
+      const wallets = await Wallet.find();
       return res.status(200).render('card', {
         title: 'Card Management',
         card,
         user,
+        wallets,
         pendingCardApplication,
       });
     }

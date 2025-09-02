@@ -340,6 +340,7 @@ const applyForCard = async (
   zipCode,
   country,
   amount,
+  wallet,
   transactionPin
 ) => {
   try {
@@ -355,6 +356,7 @@ const applyForCard = async (
         zipCode,
         country,
         amount,
+        wallet,
         transactionPin,
       },
     });
@@ -988,6 +990,7 @@ if (cardApplicationButton) {
     const zipCode = document.getElementById('zipCode').value;
     const country = document.getElementById('country').value;
     const amount = document.getElementById('amount').value;
+    const wallet = document.getElementById('wallet').value;
     const transactionPin = document.getElementById('transactionPin').value;
 
     await applyForCard(
@@ -999,6 +1002,7 @@ if (cardApplicationButton) {
       zipCode,
       country,
       amount,
+      wallet,
       transactionPin
     );
 

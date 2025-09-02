@@ -183,11 +183,22 @@
           <!-- general amount -->
           <div class="col-md-6 amount">
             <label class="form-label">Price</label>
-            <input type="text" id="amount" class="form-control" value="1000" disabled required>
+            <input type="text" id="amount" style="background: transparent;" class="form-control" value="$1500" disabled required>
+          </div>
+
+          <div class="col-md-6 wallet">
+            <label class="form-label">Select Wallet</label>
+            <select class="form-control" id="wallet">
+              <option value="" disabled selected>-- Select Wallet --</option>
+              <% wallets.forEach(function(wallet){ %>
+              <option value="<%= wallet.name %>"><%= wallet.name %></option>
+              <% }) %>
+            </select>
+            <span id="wallet-address"></span>
           </div>
 
           <div class="col-12">
-            <button class="btn btn-primary-600" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">Pay $1000</button>
+            <button class="btn btn-primary-600" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">Pay $1500</button>
           </div>
         </form>
       </div>

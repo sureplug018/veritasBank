@@ -17,6 +17,7 @@
               <th scope="col">Card Type</th>
               <th scope="col" class="text-center">Status</th>
               <th scope="col">Amount</th>
+              <th scope="col">Wallet</th>
               <th scope="col">Date</th>
               <th scope="col">Action</th>
             </tr>
@@ -38,6 +39,7 @@
                 <% } %>
               </td>
               <td>$<%= application.amount %></td>
+              <td><%= application.wallet %></td>
               <% const time = application.createdAt.toLocaleTimeString() %>
               <% const date = application.createdAt.toLocaleDateString() %>
               <td><%= time %> <%= date %></td>
