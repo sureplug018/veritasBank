@@ -501,10 +501,15 @@ exports.card = async (req, res) => {
     }
     if (user.role === 'user') {
       const card = await Card.findOne({ user: user.id });
+      const pendingCardApplication = await CardApplication.findOne({
+        user: user.id,
+        status: 'pending',
+      });
       return res.status(200).render('card', {
         title: 'Card Management',
         card,
         user,
+        pendingCardApplication,
       });
     }
 

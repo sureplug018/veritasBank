@@ -107,6 +107,37 @@
 
 
 
+<% }else if(pendingCardApplication){ %>
+<div class="row gy-4">
+  <div style="display: flex; justify-content: center;">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Pending Card Application</h5>
+        </div>
+        <div class="card-body">
+          <form class="row gy-3 needs-validation" novalidate>
+            <div class="col-md-6">
+              <label class="form-label">Card Status</label>
+              <p>
+                <span class="bg-warning-focus text-warning-main px-32 py-4 rounded-pill fw-medium text-sm">Pending</span>
+              </p>
+            </div>
+            <p>Your card application is currently pending review. We'll notify you once the card application is approved.</p>
+            <!-- general amount -->
+            <!-- <div class="col-md-6 amount">
+              <label class="form-label">Action</label>
+              <p>
+                <button class="btn btn-danger-600" style="margin-top: 0;" type="submit">Freeze</button>
+              </p>
+            </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 <% }else{ %>
 <div class="row gy-4">
   <div class="col-lg-12">
